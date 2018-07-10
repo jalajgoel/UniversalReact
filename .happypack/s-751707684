@@ -1,0 +1,78 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.handleAboutUs = handleAboutUs;
+exports.handleFormError = handleFormError;
+exports.getAboutUs = getAboutUs;
+exports.editAboutUs = editAboutUs;
+exports.editNameSurname = editNameSurname;
+const ABOUTUS = exports.ABOUTUS = 'ABOUTUS';
+const ERROR = exports.ERROR = 'ERROR';
+
+function handleAboutUs(res) {
+  return {
+    type: ABOUTUS,
+    payload: res
+  };
+}
+
+function handleFormError(err) {
+  return {
+    type: ERROR,
+    message: err
+  };
+}
+
+function getAboutUs(token_val) {
+  return (dispatch, state) => fetch('http://18.195.238.14:3001/api/profile', {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${token_val}`
+    }
+  }).then(res => res.json()).then(res => {
+    if (typeof res === 'object') {
+      return dispatch(handleAboutUs(res));
+    }
+    return dispatch(handleFormError(res));
+  }).catch(err => dispatch(handleFormError(err)));
+}
+
+function editAboutUs(token, editaboutdata) {
+  const data = [{ propName: 'about', value: editaboutdata }];
+  return (dispatch, state) => fetch('http://18.195.238.14:3001/api/profile', {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(data)
+  }).then(res => res.json()).then(res => {
+    if (typeof res === 'object') {
+      return dispatch(handleAboutUs(res));
+    }
+    return dispatch(handleFormError(res));
+  }).catch(err => dispatch(handleFormError(err)));
+}
+
+function editNameSurname(token, name, surname) {
+  const data = [{ propName: 'name', value: name }, { propName: 'surname', value: surname }];
+  return (dispatch, state) => fetch('http://18.195.238.14:3001/api/profile', {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(data)
+  }).then(res => res.json()).then(res => {
+    if (typeof res === 'object') {
+      return dispatch(handleAboutUs(res));
+    }
+    return dispatch(handleFormError(res));
+  }).catch(err => dispatch(handleFormError(err)));
+}

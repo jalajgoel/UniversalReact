@@ -1,0 +1,145 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ERROR = exports.CONTENT = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.contentCardSuccess = contentCardSuccess;
+exports.contentCardError = contentCardError;
+exports.getContentCard = getContentCard;
+exports.getCategoryFilter_Data = getCategoryFilter_Data;
+exports.getTypeFilter = getTypeFilter;
+
+require('fetch-everywhere');
+
+var _configureStore = require('../redux/configureStore');
+
+var _configureStore2 = _interopRequireDefault(_configureStore);
+
+var _variables = require('../../variables');
+
+var _variables2 = _interopRequireDefault(_variables);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CONTENT = exports.CONTENT = 'CONTENT';
+var ERROR = exports.ERROR = 'ERROR';
+
+// sending received response from backed to reducer
+function contentCardSuccess(res) {
+  return {
+    type: CONTENT,
+    payload: res
+  };
+}
+
+// to hndle error
+function contentCardError(err) {
+  return {
+    type: ERROR,
+    message: err
+  };
+}
+
+// sorting content cards acc to likes, trends
+function getContentCard(likeFilter, trendFilter, pageno) {
+  var url = '';
+  if (likeFilter == false && trendFilter == true) {
+    url = _variables2.default.url.liveURL + '/api/articles/trending/';
+  } else if (likeFilter == true && trendFilter == false) {
+    url = _variables2.default.url.liveURL + '/api/articles/likes/';
+  } else if (likeFilter == true && trendFilter == true) {
+    url = _variables2.default.url.liveURL + '/api/articles/both/';
+  } else {
+    url = _variables2.default.url.liveURL + '/api/articles/latest/';
+  }
+  return function (dispatch, state) {
+    return fetch(url + pageno, {
+      method: 'get'
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+        var content = res.content;
+        return dispatch(contentCardSuccess(content));
+      }
+      return dispatch(contentCardError(res));
+    }).catch(function (error) {
+      return dispatch(contentCardError(error));
+    });
+  };
+}
+
+// receiving content data for quickCategories from backend
+function getCategoryFilter_Data(categoryFilter) {
+  return function (dispatch, state) {
+    return fetch(_variables2.default.url.liveURL + '/api/' + categoryFilter + '/1', {
+      method: 'get'
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+        var data = res.content;
+        return dispatch(contentCardSuccess(data));
+      }
+      return dispatch(contentCardError(res));
+    }).catch(function (error) {
+      return dispatch(contentCardError(error));
+    });
+  };
+}
+
+// receiving content data for dropdown
+function getTypeFilter(filter, likeFilter, trendFilter) {
+  var url = '';
+  if (filter && likeFilter == false && trendFilter == true) {
+    url = _variables2.default.url.liveURL + '/api/articles/trending/' + filter + '/';
+  } else if (filter && likeFilter == true && trendFilter == false) {
+    url = _variables2.default.url.liveURL + '/api/articles/likes/' + filter + '/';
+  } else if (filter && likeFilter == true && trendFilter == true) {
+    url = _variables2.default.url.liveURL + '/api/articles/both/' + filter + '/';
+  } else {
+    url = _variables2.default.url.liveURL + '/api/articles/latest/' + filter + '/';
+  }
+  return function (dispatch, state) {
+    return fetch(url + '1', {
+      method: 'get'
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+        var filtered_data = res.content;
+        return dispatch(contentCardSuccess(filtered_data));
+      }
+      return dispatch(contentCardError(res));
+    }).catch(function (error) {
+      return dispatch(contentCardError(error));
+    });
+  };
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(CONTENT, 'CONTENT', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/contentcard_action.js');
+
+  __REACT_HOT_LOADER__.register(ERROR, 'ERROR', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/contentcard_action.js');
+
+  __REACT_HOT_LOADER__.register(contentCardSuccess, 'contentCardSuccess', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/contentcard_action.js');
+
+  __REACT_HOT_LOADER__.register(contentCardError, 'contentCardError', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/contentcard_action.js');
+
+  __REACT_HOT_LOADER__.register(getContentCard, 'getContentCard', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/contentcard_action.js');
+
+  __REACT_HOT_LOADER__.register(getCategoryFilter_Data, 'getCategoryFilter_Data', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/contentcard_action.js');
+
+  __REACT_HOT_LOADER__.register(getTypeFilter, 'getTypeFilter', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/contentcard_action.js');
+}();
+
+;

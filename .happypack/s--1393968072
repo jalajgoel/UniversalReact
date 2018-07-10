@@ -1,0 +1,1136 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/userProfile/UserProfile.js';
+
+// import { Draggable, Droppable } from 'react-drag-and-drop'-- not working
+// import {FileDrop} from "react-file-drop"; not working
+// import DropToUpload from 'react-drop-to-upload'; not working
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _userProfile_action = require('../../actions/userProfile_action');
+
+var _reactRouterDom = require('react-router-dom');
+
+var _universalCookie = require('universal-cookie');
+
+var _universalCookie2 = _interopRequireDefault(_universalCookie);
+
+var _reactDropToUpload = require('react-drop-to-upload');
+
+var _reactDropToUpload2 = _interopRequireDefault(_reactDropToUpload);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class UserProfile extends _react.Component {
+  constructor() {
+    super();
+    this.state = {
+      editAbout: false,
+      showAboutUs: false,
+      about_data: '',
+      name: '',
+      surname: '',
+      showNameSurname: false,
+      active: 0,
+      drops: []
+    };
+
+    // profile image upload event binders
+    this.handleDrop = this.handleDrop.bind(this);
+    this.handleDropArrayBuffer = this.handleDropArrayBuffer.bind(this);
+    this.handleDropDataURI = this.handleDropDataURI.bind(this);
+    this.handleLeave = this.handleLeave.bind(this);
+    this.handleOver = this.handleOver.bind(this);
+  }
+
+  // for profile pic upload
+  handleDrop(files) {
+    console.log(files);
+    console.log(arguments);
+    const data = new FormData();
+
+    files.forEach((file, index) => {
+      data.append(`file${index}`, file[0]);
+      console.log(file.name);
+    });
+    this.setState({
+      active: 0,
+      drops: this.state.drops.slice().concat(files.map(file => ({
+        type: 'File',
+        name: file.name,
+        size: file.size
+      })))
+    });
+  }
+
+  handleDropArrayBuffer(arrayBuffers, files) {
+    console.log('dropArrayBuffer');
+    console.log(arguments);
+
+    this.setState({
+      active: 0,
+      drops: this.state.drops.slice().concat(files.map((file, index) => ({
+        type: 'ArrayBuffer',
+        name: file.name,
+        size: file.size,
+        md5: SparkMD5.ArrayBuffer.hash(arrayBuffers[index])
+      })))
+    });
+  }
+
+  handleDropDataURI(dataURIs, files) {
+    console.log('dropDataURI');
+    console.log(dataURIs);
+    const profile_picture = dataURIs;
+    const cookies = new _universalCookie2.default();
+    const token_val = cookies.get('risorsoLoggedIn');
+    const data = new FormData(dataURIs);
+    data.append('file', file);
+    console.log(data);
+    fetch('http://192.168.20.127:4000/api/upload/profilePicture', {
+      method: 'put',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-type': 'multipart/form-data',
+        Authorization: `Bearer ${token_val}`
+      },
+      body: JSON.stringify(profile_picture)
+    });
+
+    this.setState({
+      active: 0,
+      drops: this.state.drops.slice().concat(files.map(file => ({
+        type: 'Data URI',
+        name: file.name,
+        size: file.size
+      })))
+    });
+  }
+
+  handleLeave() {
+    this.setState({ active: 0 });
+  }
+
+  handleOver() {
+    this.setState({ active: 1 });
+  }
+
+  // profile pic upload ends
+
+  componentWillMount() {
+    const cookies = new _universalCookie2.default();
+    const token_val = cookies.get('risorsoLoggedIn');
+    // to get user profile data when profile displayed
+    this.props.getAboutUs(token_val);
+    // this.props.getNameSurname(token_val);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // to receive prop from redux store
+    console.log(this.props, 'recv props');
+    let about, name, surname;
+    console.log('nextprops', nextProps);
+    // null check..will load props data if props has somethig to display
+    if (nextProps.aboutusdata.fetchUserProfile.response) {
+      console.log('jlaja', nextProps.aboutusdata.fetchUserProfile.response);
+      // debugger;
+      if (nextProps.aboutusdata.fetchUserProfile.response.profile.length > 0) {
+        about = nextProps.aboutusdata.fetchUserProfile.response.profile[0].about;
+        name = nextProps.aboutusdata.fetchUserProfile.response.profile[0].name;
+        surname = nextProps.aboutusdata.fetchUserProfile.response.profile[0].surname;
+        // console.log(about)
+        this.setState({
+          about_data: about,
+          name,
+          surname
+        });
+      }
+    }
+  }
+  // About Us starts
+
+  // aboutus form to edit. if 'edit' clicked form to update aboutus will displayed
+  // else span which shows data which is already in database.
+  openAboutUsForm() {
+    if (this.state.showAboutUs) {
+      return _react2.default.createElement(
+        'form',
+        { onSubmit: this.submitAboutUs.bind(this), __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 154
+          }
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'form-group', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 155
+            }
+          },
+          _react2.default.createElement('textarea', {
+            className: 'form-control',
+            rows: '5',
+            name: 'aboutus',
+            value: this.state.about_data,
+            onChange: this.aboutusInput.bind(this),
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 156
+            }
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'text-right', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 164
+            }
+          },
+          _react2.default.createElement('input', {
+            type: 'submit',
+            name: 'AboutUs_submit',
+            value: 'Save',
+            className: 'submit_button append-margin',
+            onClick: this.submitAboutUs.bind(this),
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 165
+            }
+          })
+        )
+      );
+    }
+    return _react2.default.createElement(
+      'span',
+      { className: 'text-muted', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 177
+        }
+      },
+      this.state.about_data
+    );
+  }
+
+  // handler of aboutus input
+  aboutusInput(e) {
+    this.setState({ about_data: e.target.value });
+  }
+
+  // handler for display hide aboutus form
+  handleOpenAboutUsForm() {
+    this.setState({ showAboutUs: !this.state.showAboutUs });
+  }
+  // handler to submit aboutus form
+  submitAboutUs(e) {
+    e.preventDefault();
+    const editaboutdata = this.state.about_data;
+    console.log('about', editaboutdata);
+    const cookies = new _universalCookie2.default();
+    const token_val = cookies.get('risorsoLoggedIn');
+    console.log(token_val);
+    this.props.editAboutUs(token_val, editaboutdata);
+    this.setState({ showAboutUs: !this.state.showAboutUs });
+  }
+  // About Us ends
+
+  // name surname starts
+  handleOpenUserNameForm() {
+    this.setState({ showNameSurname: !this.state.showNameSurname });
+  }
+
+  handleNameInput(e) {
+    this.setState({ name: e.target.value });
+  }
+
+  handleSurnameInput(e) {
+    this.setState({ surname: e.target.value });
+  }
+  submitNameSurnameForm(e) {
+    e.preventDefault();
+    console.log('name ', this.state.name, 'surname ', this.state.surname);
+    const cookies = new _universalCookie2.default();
+    const token_val = cookies.get('risorsoLoggedIn');
+    const name = this.state.name;
+    const surname = this.state.surname;
+    this.props.editNameSurname(token_val, name, surname);
+    this.setState({ showNameSurname: !this.state.showNameSurname });
+  }
+
+  openNameSurnameForm() {
+    if (this.state.showNameSurname) {
+      return _react2.default.createElement(
+        'form',
+        {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 231
+          }
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'form-group nameinput', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 232
+            }
+          },
+          _react2.default.createElement('input', {
+            value: this.state.name,
+            onChange: this.handleNameInput.bind(this),
+            type: 'text',
+            className: 'form-control',
+            name: 'name',
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 233
+            }
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-group nameinput', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 241
+            }
+          },
+          _react2.default.createElement('input', {
+            value: this.state.surname,
+            onChange: this.handleSurnameInput.bind(this),
+            type: 'text',
+            className: 'form-control',
+            name: 'surname',
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 242
+            }
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'text-right nameinputSave', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 250
+            }
+          },
+          _react2.default.createElement('input', {
+            type: 'submit',
+            name: 'AboutUs_submit',
+            value: 'Save',
+            className: 'submit_button append-margin ',
+            onClick: this.submitNameSurnameForm.bind(this),
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 251
+            }
+          })
+        )
+      );
+    }
+    console.log('else userform');
+    return _react2.default.createElement(
+      'div',
+      {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 264
+        }
+      },
+      _react2.default.createElement(
+        'div',
+        { className: 'firstname', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 265
+          }
+        },
+        this.state.name
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'lastname', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 268
+          }
+        },
+        this.state.surname
+      )
+    );
+  }
+  // name surname ends
+
+  // to restrict display of profile ..if user not loggedin
+  checkUserStatus() {
+    const cookies = new _universalCookie2.default();
+    const a = cookies.get('risorsoLoggedIn');
+    if (a) {
+      // console.log('in');
+      return false;
+    }
+    // console.log('out');
+    return true;
+  }
+
+  // react drag-to-drop-upload
+
+  render() {
+    const redirect = this.checkUserStatus();
+    // if (redirect) {
+    //   return <Redirect to="/login" />;
+    // }
+
+    let openAboutUsForm;
+    openAboutUsForm = this.openAboutUsForm();
+    let openNameSurnameForm;
+    openNameSurnameForm = this.openNameSurnameForm();
+
+    return _react2.default.createElement(
+      'div',
+      { className: 'container', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 302
+        }
+      },
+      _react2.default.createElement(
+        'div',
+        { className: 'row', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 303
+          }
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-2', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 304
+            }
+          },
+          'your space side bar'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-10 no_padding', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 305
+            }
+          },
+          _react2.default.createElement(
+            'div',
+            { className: 'profile_top_bar', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 306
+              }
+            },
+            _react2.default.createElement(
+              'ul',
+              { className: 'top_list', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 307
+                }
+              },
+              _react2.default.createElement(
+                'li',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 308
+                  }
+                },
+                _react2.default.createElement('span', { className: 'img_parent img_Bank', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 309
+                  }
+                }),
+                'Bank Accounts'
+              ),
+              _react2.default.createElement(
+                'li',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 311
+                  }
+                },
+                _react2.default.createElement('span', { className: 'img_parent img_Credit', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 312
+                  }
+                }),
+                'Credit Cards'
+              ),
+              _react2.default.createElement(
+                'li',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 314
+                  }
+                },
+                _react2.default.createElement('span', { className: 'img_parent img_Account', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 315
+                  }
+                }),
+                'Account Settings'
+              ),
+              _react2.default.createElement(
+                'li',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 317
+                  }
+                },
+                _react2.default.createElement('span', { className: 'img_parent img_Privacy', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 318
+                  }
+                }),
+                'Privacy'
+              ),
+              _react2.default.createElement(
+                'li',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 320
+                  }
+                },
+                _react2.default.createElement('span', { className: 'img_parent img_user_Profile', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 321
+                  }
+                }),
+                'user Profile'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'outer-section', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 327
+              }
+            },
+            _react2.default.createElement(
+              'div',
+              { className: 'title-section', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 328
+                }
+              },
+              _react2.default.createElement(
+                'span',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 329
+                  }
+                },
+                'About Us'
+              ),
+              _react2.default.createElement('img', {
+                src: '../assets/images/Edit.png',
+                className: 'pull-right edit-icon',
+                'data-toggle': 'tooltip',
+                'data-placement': 'top',
+                title: 'Edit',
+                onClick: this.handleOpenAboutUsForm.bind(this),
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 330
+                }
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'data-section', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 339
+                }
+              },
+              _react2.default.createElement(
+                'div',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 340
+                  }
+                },
+                openAboutUsForm
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'profile-picture append-margin', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 347
+              }
+            },
+            _react2.default.createElement(
+              'div',
+              { className: 'picture-title', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 348
+                }
+              },
+              _react2.default.createElement(
+                'span',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 349
+                  }
+                },
+                'Profile Picture'
+              ),
+              _react2.default.createElement('img', {
+                src: '../assets/images/Edit.png',
+                className: 'pull-right edit-icon',
+                'data-toggle': 'tooltip',
+                'data-placement': 'top',
+                title: 'Edit',
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 350
+                }
+              })
+            ),
+            _react2.default.createElement('div', { className: 'profile-img', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 358
+              }
+            }),
+            _react2.default.createElement(
+              'div',
+              { className: 'demo_profile_pic', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 359
+                }
+              },
+              _react2.default.createElement(
+                _reactDropToUpload2.default,
+                {
+                  element: 'div',
+                  onDrop: this.handleDrop,
+                  onDropArrayBuffer: this.handleDropArrayBuffer,
+                  onDropDataURI: this.handleDropDataURI,
+                  onLeave: this.handleLeave,
+                  onOver: this.handleOver,
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 360
+                  }
+                },
+                this.state.active ? _react2.default.createElement(
+                  'h1',
+                  {
+                    __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 368
+                    }
+                  },
+                  'Drop file to upload'
+                ) : _react2.default.createElement(
+                  'h1',
+                  {
+                    __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 368
+                    }
+                  },
+                  'Drag file here'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'ul',
+              {
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 371
+                }
+              },
+              this.state.drops.map((drop, index) => _react2.default.createElement(
+                'li',
+                { key: index, __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 373
+                  }
+                },
+                _react2.default.createElement(
+                  'span',
+                  {
+                    __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 374
+                    }
+                  },
+                  drop.type,
+                  ': ',
+                  drop.name,
+                  ' (',
+                  drop.size,
+                  ' bytes)'
+                ),
+                drop.md5 && _react2.default.createElement(
+                  'ul',
+                  {
+                    __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 378
+                    }
+                  },
+                  _react2.default.createElement(
+                    'li',
+                    {
+                      __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 379
+                      }
+                    },
+                    'MD5 is ',
+                    drop.md5
+                  )
+                )
+              ))
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'outer-section append-margin name-surname', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 388
+              }
+            },
+            _react2.default.createElement(
+              'div',
+              { className: 'title-section', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 389
+                }
+              },
+              _react2.default.createElement(
+                'span',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 390
+                  }
+                },
+                'Name Surname'
+              ),
+              _react2.default.createElement('img', {
+                src: '../assets/images/Edit.png',
+                className: 'pull-right edit-icon',
+                onClick: this.handleOpenUserNameForm.bind(this),
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 391
+                }
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'data-section', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 397
+                }
+              },
+              openNameSurnameForm
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'outer-section append-margin', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 402
+              }
+            },
+            _react2.default.createElement(
+              'div',
+              { className: 'title-section', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 403
+                }
+              },
+              _react2.default.createElement(
+                'span',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 404
+                  }
+                },
+                'Cover Picture'
+              ),
+              _react2.default.createElement('img', {
+                src: '../assets/images/Edit.png',
+                className: 'pull-right edit-icon',
+                'data-toggle': 'tooltip',
+                'data-placement': 'top',
+                title: 'Edit',
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 405
+                }
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'data-section', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 413
+                }
+              },
+              _react2.default.createElement(
+                'div',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 414
+                  }
+                },
+                _react2.default.createElement('img', { src: '', alt: 'cover photo', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 415
+                  }
+                })
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'outer-section', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 420
+              }
+            },
+            _react2.default.createElement(
+              'div',
+              { className: 'title-section', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 421
+                }
+              },
+              _react2.default.createElement(
+                'span',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 422
+                  }
+                },
+                'Social Network Connections'
+              ),
+              _react2.default.createElement('img', {
+                src: '../assets/images/Edit.png',
+                className: 'pull-right edit-icon',
+                'data-toggle': 'tooltip',
+                'data-placement': 'top',
+                title: 'Edit',
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 423
+                }
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'data-section', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 431
+                }
+              },
+              _react2.default.createElement(
+                'div',
+                { className: 'social-network-connections', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 432
+                  }
+                },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'fb-connection', __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 433
+                    }
+                  },
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'user-social-icons text-muted', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 434
+                      }
+                    },
+                    _react2.default.createElement('i', { className: 'fa fa-facebook', 'aria-hidden': 'true', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 435
+                      }
+                    })
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'socialnet-name', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 437
+                      }
+                    },
+                    'Facebook/risorso'
+                  ),
+                  _react2.default.createElement(
+                    'button',
+                    { className: 'submit_button pull-right', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 438
+                      }
+                    },
+                    'Disconnect'
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'fb-connection', __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 440
+                    }
+                  },
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'user-social-icons text-muted', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 441
+                      }
+                    },
+                    _react2.default.createElement('i', { className: 'fa fa-twitter', 'aria-hidden': 'true', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 442
+                      }
+                    })
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'socialnet-name', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 444
+                      }
+                    },
+                    'Twitter/risorso'
+                  ),
+                  _react2.default.createElement(
+                    'button',
+                    { className: 'submit_button pull-right', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 445
+                      }
+                    },
+                    'Disconnect'
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'fb-connection', __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 447
+                    }
+                  },
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'user-social-icons text-muted', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 448
+                      }
+                    },
+                    _react2.default.createElement('i', { className: 'fa fa-google-plus', 'aria-hidden': 'true', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 449
+                      }
+                    })
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'socialnet-name', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 451
+                      }
+                    },
+                    'Google Plus'
+                  ),
+                  _react2.default.createElement(
+                    'button',
+                    { className: 'submit_button pull-right', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 452
+                      }
+                    },
+                    'Disconnect'
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'fb-connection', __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 454
+                    }
+                  },
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'user-social-icons text-muted', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 455
+                      }
+                    },
+                    _react2.default.createElement('i', { className: 'fa fa-linkedin', 'aria-hidden': 'true', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 456
+                      }
+                    })
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'socialnet-name', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 458
+                      }
+                    },
+                    'LinkedIn'
+                  ),
+                  _react2.default.createElement(
+                    'button',
+                    { className: 'submit_button pull-right', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 459
+                      }
+                    },
+                    'Disconnect'
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  const aboutusdata = state;
+  return { aboutusdata };
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    getAboutUs: token_val => {
+      dispatch((0, _userProfile_action.getAboutUs)(token_val));
+    },
+    editAboutUs: (token_val, editaboutdata) => {
+      dispatch((0, _userProfile_action.editAboutUs)(token_val, editaboutdata));
+    },
+    editNameSurname: (token_val, name, surname) => {
+      dispatch((0, _userProfile_action.editNameSurname)(token_val, name, surname));
+    }
+  };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(UserProfile);

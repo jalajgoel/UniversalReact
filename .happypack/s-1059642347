@@ -1,0 +1,65 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.CONTENT = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.contentCardSuccess = contentCardSuccess;
+exports.contentCardError = contentCardError;
+exports.getContentCard = getContentCard;
+
+require("fetch-everywhere");
+
+var CONTENT = exports.CONTENT = "CONTENT";
+
+function contentCardSuccess(res) {
+	return {
+		type: CONTENT,
+		payload: res
+	};
+}
+function contentCardError(err) {
+	return {
+		type: ERROR,
+		message: err
+	};
+}
+function getContentCard() {
+	return function (dispatch, state) {
+
+		return fetch('http://192.168.20.168:4000/api/content_list/latest/' + 1, {
+			method: "get"
+		}).then(function (res) {
+			return res.json();
+		}).then(function (res) {
+			if ((typeof res === "undefined" ? "undefined" : _typeof(res)) === 'object') {
+				var content = res.content;
+				return dispatch(contentCardSuccess(content));
+			} else {
+				return dispatch(contentCardError(res));
+			}
+		}).catch(function (error) {
+			return dispatch(contentCardError(error));
+		});
+	};
+}
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(CONTENT, "CONTENT", "/home/spineor/risorso/shared/actions/contentcard_action.js");
+
+	__REACT_HOT_LOADER__.register(contentCardSuccess, "contentCardSuccess", "/home/spineor/risorso/shared/actions/contentcard_action.js");
+
+	__REACT_HOT_LOADER__.register(contentCardError, "contentCardError", "/home/spineor/risorso/shared/actions/contentcard_action.js");
+
+	__REACT_HOT_LOADER__.register(getContentCard, "getContentCard", "/home/spineor/risorso/shared/actions/contentcard_action.js");
+}();
+
+;

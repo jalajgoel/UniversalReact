@@ -1,0 +1,101 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ERROR = exports.CONTENT = undefined;
+exports.contentCardSuccess = contentCardSuccess;
+exports.contentCardError = contentCardError;
+exports.getContentCard = getContentCard;
+exports.getCategoryFilter_Data = getCategoryFilter_Data;
+exports.getTypeFilter = getTypeFilter;
+
+require('fetch-everywhere');
+
+var _configureStore = require('../redux/configureStore');
+
+var _configureStore2 = _interopRequireDefault(_configureStore);
+
+var _variables = require('../../variables');
+
+var _variables2 = _interopRequireDefault(_variables);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const CONTENT = exports.CONTENT = 'CONTENT';
+const ERROR = exports.ERROR = 'ERROR';
+
+// sending received response from backed to reducer
+function contentCardSuccess(res) {
+  return {
+    type: CONTENT,
+    payload: res
+  };
+}
+
+// to hndle error
+function contentCardError(err) {
+  return {
+    type: ERROR,
+    message: err
+  };
+}
+
+// sorting content cards acc to likes, trends
+function getContentCard(likeFilter, trendFilter, pageno) {
+  let url = '';
+  if (likeFilter == false && trendFilter == true) {
+    url = `${_variables2.default.url.liveURL}/api/articles/trending/`;
+  } else if (likeFilter == true && trendFilter == false) {
+    url = `${_variables2.default.url.liveURL}/api/articles/likes/`;
+  } else if (likeFilter == true && trendFilter == true) {
+    url = `${_variables2.default.url.liveURL}/api/articles/both/`;
+  } else {
+    url = `${_variables2.default.url.liveURL}/api/articles/latest/`;
+  }
+  return (dispatch, state) => fetch(url + pageno, {
+    method: 'get'
+  }).then(res => res.json()).then(res => {
+    if (typeof res === 'object') {
+      const content = res.content;
+      return dispatch(contentCardSuccess(content));
+    }
+    return dispatch(contentCardError(res));
+  }).catch(error => dispatch(contentCardError(error)));
+}
+
+// receiving content data for quickCategories from backend
+function getCategoryFilter_Data(categoryFilter) {
+  return (dispatch, state) => fetch(`${_variables2.default.url.liveURL}/api/${categoryFilter}/1`, {
+    method: 'get'
+  }).then(res => res.json()).then(res => {
+    if (typeof res === 'object') {
+      const data = res.content;
+      return dispatch(contentCardSuccess(data));
+    }
+    return dispatch(contentCardError(res));
+  }).catch(error => dispatch(contentCardError(error)));
+}
+
+// receiving content data for dropdown
+function getTypeFilter(filter, likeFilter, trendFilter) {
+  let url = '';
+  if (filter && likeFilter == false && trendFilter == true) {
+    url = `${_variables2.default.url.liveURL}/api/articles/trending/${filter}/`;
+  } else if (filter && likeFilter == true && trendFilter == false) {
+    url = `${_variables2.default.url.liveURL}/api/articles/likes/${filter}/`;
+  } else if (filter && likeFilter == true && trendFilter == true) {
+    url = `${_variables2.default.url.liveURL}/api/articles/both/${filter}/`;
+  } else {
+    url = `${_variables2.default.url.liveURL}/api/articles/latest/${filter}/`;
+  }
+  return (dispatch, state) => fetch(`${url}1`, {
+    method: 'get'
+  }).then(res => res.json()).then(res => {
+    if (typeof res === 'object') {
+      const filtered_data = res.content;
+      return dispatch(contentCardSuccess(filtered_data));
+    }
+    return dispatch(contentCardError(res));
+  }).catch(error => dispatch(contentCardError(error)));
+}

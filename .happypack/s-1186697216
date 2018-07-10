@@ -1,0 +1,472 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var _jsxFileName = '/home/spineor/risorso/shared/components/ContentCard.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _reactTimeago = require('react-timeago');
+
+var _reactTimeago2 = _interopRequireDefault(_reactTimeago);
+
+var _contentcard_action = require('../actions/contentcard_action');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ContentCard = function (_Component) {
+	_inherits(ContentCard, _Component);
+
+	function ContentCard(props) {
+		_classCallCheck(this, ContentCard);
+
+		return _possibleConstructorReturn(this, (ContentCard.__proto__ || Object.getPrototypeOf(ContentCard)).call(this, props));
+	}
+
+	_createClass(ContentCard, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.props.getContentCard();
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var obj;
+			console.log('like', this.props.like, 'trend', this.props.trend);
+			if (this.props.contentdata.viewContentCard.result) {
+				if (this.props.contentdata.viewContentCard.result.length > 0) {
+					if (this.props.like) {
+
+						obj = this.props.contentdata.viewContentCard.result.sort(function (a, b) {
+							return a.likes < b.likes;
+						});
+						console.log("if like", obj);
+					} else if (this.props.trend) {
+						obj = this.props.contentdata.viewContentCard.result.sort(function (a, b) {
+							return a.trending < b.trending;
+						});
+						console.log("if trend", obj);
+					} else {
+						obj = this.props.contentdata.viewContentCard.result;
+						console.log("else", obj);
+					}
+					var my = this;
+					var contentMapping = obj.map(function (data) {
+
+						return _react2.default.createElement(
+							'div',
+							{ key: data._id, className: my.props.layout3 == true || my.props.layout4 == false ? "col-xs-6 col-sm-6 col-md-4 col-lg-4 no_padding padding_left" : my.props.layout4 == true || my.props.layout3 == false ? "col-xs-6 col-sm-6 col-md-3 col-lg-3 no_padding padding_left" : "col-xs-6 col-sm-6 col-md-4 col-lg-4 no_padding padding_left", __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 41
+								}
+							},
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel content-card', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 42
+									}
+								},
+								_react2.default.createElement('img', { className: 'img-responsive card-image', src: data.featuring_image, alt: 'content card img', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 43
+									}
+								}),
+								_react2.default.createElement(
+									'div',
+									{ className: 'panel-body', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 44
+										}
+									},
+									_react2.default.createElement(
+										'div',
+										{ className: 'content-card-section1', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 45
+											}
+										},
+										_react2.default.createElement(
+											'div',
+											{ className: 'content-card-title', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 46
+												}
+											},
+											_react2.default.createElement(
+												'p',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 47
+													}
+												},
+												data.publishingChannel,
+												', ',
+												_react2.default.createElement(
+													'span',
+													{ className: 'text-muted', __self: this,
+														__source: {
+															fileName: _jsxFileName,
+															lineNumber: 47
+														}
+													},
+													_react2.default.createElement(_reactTimeago2.default, { date: data.published_time, __self: this,
+														__source: {
+															fileName: _jsxFileName,
+															lineNumber: 47
+														}
+													})
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'content-card-info', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 49
+												}
+											},
+											_react2.default.createElement(
+												'a',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 50
+													}
+												},
+												_react2.default.createElement(
+													'h3',
+													{
+														__self: this,
+														__source: {
+															fileName: _jsxFileName,
+															lineNumber: 50
+														}
+													},
+													data.content_title
+												)
+											),
+											_react2.default.createElement(
+												'p',
+												{ className: 'text-muted', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 51
+													}
+												},
+												data.content_description
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'content-card-section2', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 54
+											}
+										},
+										_react2.default.createElement(
+											'ul',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 55
+												}
+											},
+											_react2.default.createElement(
+												'li',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 56
+													}
+												},
+												_react2.default.createElement('img', { src: data.channel_logo, 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Channel Logo', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 56
+													}
+												})
+											),
+											_react2.default.createElement(
+												'li',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 57
+													}
+												},
+												_react2.default.createElement('img', { src: 'assets/images/content-card/banner-icon-divider.png', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 57
+													}
+												})
+											),
+											_react2.default.createElement(
+												'li',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 58
+													}
+												},
+												_react2.default.createElement('img', { src: data.qiick_category_icon, 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Quick Category', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 58
+													}
+												})
+											),
+											_react2.default.createElement(
+												'li',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 59
+													}
+												},
+												_react2.default.createElement('img', { src: 'assets/images/content-card/banner-icon-divider.png', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 59
+													}
+												})
+											),
+											_react2.default.createElement(
+												'li',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 60
+													}
+												},
+												_react2.default.createElement('img', { src: data.content_type_icon, 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Content Type', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 60
+													}
+												})
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'content-card-footer', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 63
+											}
+										},
+										_react2.default.createElement(
+											'ul',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 64
+												}
+											},
+											_react2.default.createElement(
+												'li',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 65
+													}
+												},
+												_react2.default.createElement('i', { className: 'ico-icon42 footer-icons', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Trending', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 65
+													}
+												}),
+												_react2.default.createElement(
+													'span',
+													{ className: 'text-muted', __self: this,
+														__source: {
+															fileName: _jsxFileName,
+															lineNumber: 65
+														}
+													},
+													data.trend_graph
+												)
+											),
+											_react2.default.createElement(
+												'li',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 66
+													}
+												},
+												_react2.default.createElement('img', { src: 'assets/images/content-card/property-divider.png', alt: 'card-footer items', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 66
+													}
+												})
+											),
+											_react2.default.createElement(
+												'li',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 67
+													}
+												},
+												_react2.default.createElement('i', { className: 'ico-icon44 footer-icons text-muted', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Comments', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 67
+													}
+												}),
+												_react2.default.createElement(
+													'span',
+													{ className: 'text-muted', __self: this,
+														__source: {
+															fileName: _jsxFileName,
+															lineNumber: 67
+														}
+													},
+													data.comments
+												)
+											),
+											_react2.default.createElement(
+												'li',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 68
+													}
+												},
+												_react2.default.createElement('img', { src: 'assets/images/content-card/property-divider.png', alt: 'card-footer items', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 68
+													}
+												})
+											),
+											_react2.default.createElement(
+												'li',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 69
+													}
+												},
+												_react2.default.createElement('i', { className: 'ico-icon43 footer-icons text-muted', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Likes', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 69
+													}
+												}),
+												_react2.default.createElement(
+													'span',
+													{ className: 'text-muted', __self: this,
+														__source: {
+															fileName: _jsxFileName,
+															lineNumber: 69
+														}
+													},
+													data.likes
+												)
+											)
+										)
+									)
+								)
+							)
+						);
+					});
+				}
+			}
+
+			return _react2.default.createElement(
+				'div',
+				{
+					__self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 83
+					}
+				},
+				contentMapping
+			);
+		}
+	}]);
+
+	return ContentCard;
+}(_react.Component);
+
+function mapStateToProps(state) {
+	var contentdata = state;
+	return { contentdata: contentdata };
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		getContentCard: function getContentCard() {
+			dispatch((0, _contentcard_action.getContentCard)());
+		}
+	};
+}
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ContentCard);
+
+exports.default = _default;
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(ContentCard, 'ContentCard', '/home/spineor/risorso/shared/components/ContentCard.js');
+
+	__REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/home/spineor/risorso/shared/components/ContentCard.js');
+
+	__REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/home/spineor/risorso/shared/components/ContentCard.js');
+
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/risorso/shared/components/ContentCard.js');
+}();
+
+;

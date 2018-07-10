@@ -1,0 +1,110 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/DemoApp/AsyncPostsRoute/index.js';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _Post = require('./Post');
+
+var _Post2 = _interopRequireDefault(_Post);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AsyncPostsRoute = function AsyncPostsRoute() {
+  return _react2.default.createElement(
+    'div',
+    {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 6
+      }
+    },
+    _react2.default.createElement(
+      'ul',
+      {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7
+        }
+      },
+      _react2.default.createElement(
+        'li',
+        {
+          __self: undefined,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 8
+          }
+        },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/posts/1', __self: undefined,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 9
+            }
+          },
+          'Post 1'
+        )
+      ),
+      _react2.default.createElement(
+        'li',
+        {
+          __self: undefined,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 11
+          }
+        },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/posts/2', __self: undefined,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 12
+            }
+          },
+          'Post 2'
+        )
+      )
+    ),
+    _react2.default.createElement('hr', {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      }
+    }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/posts/:id', component: _Post2.default, __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18
+      }
+    })
+  );
+};
+
+var _default = AsyncPostsRoute;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(AsyncPostsRoute, 'AsyncPostsRoute', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/DemoApp/AsyncPostsRoute/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/DemoApp/AsyncPostsRoute/index.js');
+}();
+
+;

@@ -1,0 +1,122 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.handleAboutUs = handleAboutUs;
+exports.handleFormError = handleFormError;
+exports.getAboutUs = getAboutUs;
+exports.editAboutUs = editAboutUs;
+exports.editNameSurname = editNameSurname;
+var ABOUTUS = exports.ABOUTUS = 'ABOUTUS';
+var ERROR = exports.ERROR = 'ERROR';
+
+function handleAboutUs(res) {
+  return {
+    type: ABOUTUS,
+    payload: res
+  };
+}
+
+function handleFormError(err) {
+  return {
+    type: ERROR,
+    message: err
+  };
+}
+
+function getAboutUs(token_val) {
+  return function (dispatch, state) {
+    return fetch('http://18.195.238.14:3001/api/profile', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-type': 'application/json',
+        Authorization: 'Bearer ' + token_val
+      }
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+        return dispatch(handleAboutUs(res));
+      }
+      return dispatch(handleFormError(res));
+    }).catch(function (err) {
+      return dispatch(handleFormError(err));
+    });
+  };
+}
+
+function editAboutUs(token, editaboutdata) {
+  var data = [{ propName: 'about', value: editaboutdata }];
+  return function (dispatch, state) {
+    return fetch('http://18.195.238.14:3001/api/profile', {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-type': 'application/json',
+        Authorization: 'Bearer ' + token
+      },
+      body: JSON.stringify(data)
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+        return dispatch(handleAboutUs(res));
+      }
+      return dispatch(handleFormError(res));
+    }).catch(function (err) {
+      return dispatch(handleFormError(err));
+    });
+  };
+}
+
+function editNameSurname(token, name, surname) {
+  var data = [{ propName: 'name', value: name }, { propName: 'surname', value: surname }];
+  return function (dispatch, state) {
+    return fetch('http://18.195.238.14:3001/api/profile', {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-type': 'application/json',
+        Authorization: 'Bearer ' + token
+      },
+      body: JSON.stringify(data)
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+        return dispatch(handleAboutUs(res));
+      }
+      return dispatch(handleFormError(res));
+    }).catch(function (err) {
+      return dispatch(handleFormError(err));
+    });
+  };
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(ABOUTUS, 'ABOUTUS', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/userProfile_action.js');
+
+  __REACT_HOT_LOADER__.register(ERROR, 'ERROR', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/userProfile_action.js');
+
+  __REACT_HOT_LOADER__.register(handleAboutUs, 'handleAboutUs', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/userProfile_action.js');
+
+  __REACT_HOT_LOADER__.register(handleFormError, 'handleFormError', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/userProfile_action.js');
+
+  __REACT_HOT_LOADER__.register(getAboutUs, 'getAboutUs', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/userProfile_action.js');
+
+  __REACT_HOT_LOADER__.register(editAboutUs, 'editAboutUs', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/userProfile_action.js');
+
+  __REACT_HOT_LOADER__.register(editNameSurname, 'editNameSurname', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/userProfile_action.js');
+}();
+
+;

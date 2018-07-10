@@ -1,0 +1,143 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _contentcard_action = require('../actions/contentcard_action');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class ContentCard extends _react.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	componentWillMount() {
+		this.props.getContentCard();
+	}
+
+	render() {
+		var obj;
+		if (this.props.contentdata.viewContentCard.result) {
+			if (this.props.contentdata.viewContentCard.result.length > 0) {
+				if (this.props.like) {
+
+					obj = this.props.contentdata.viewContentCard.result.sort((a, b) => a.likes < b.likes);
+				}
+				if (this.props.trend) {
+					obj = this.props.contentdata.viewContentCard.result.sort((a, b) => a.trending < b.trending);
+				} else {
+					obj = this.props.contentdata.viewContentCard.result;
+				}
+				var my = this;
+				var contentMapping = obj.map(function (data) {
+
+					return _jsx('div', {
+						className: my.props.layout3 == true || my.props.layout4 == false ? "col-xs-6 col-sm-6 col-md-4 col-lg-4 no_padding padding_left" : my.props.layout4 == true || my.props.layout3 == false ? "col-xs-6 col-sm-6 col-md-3 col-lg-3 no_padding padding_left" : "col-xs-6 col-sm-6 col-md-4 col-lg-4 no_padding padding_left"
+					}, data.id, _jsx('div', {
+						className: 'panel content-card'
+					}, void 0, _jsx('img', {
+						className: 'img-responsive card-image',
+						src: data.image,
+						alt: 'content card img'
+					}), _jsx('div', {
+						className: 'panel-body'
+					}, void 0, _jsx('div', {
+						className: 'content-card-section1'
+					}, void 0, _jsx('div', {
+						className: 'content-card-title'
+					}, void 0, _jsx('p', {}, void 0, data.channel, ', ', _jsx('span', {
+						className: 'text-muted'
+					}, void 0, data.timePublished))), _jsx('div', {
+						className: 'content-card-info'
+					}, void 0, _jsx('a', {}, void 0, _jsx('h3', {}, void 0, data.contentTitle)), _jsx('p', {
+						className: 'text-muted'
+					}, void 0, data.contentDiscription))), _jsx('div', {
+						className: 'content-card-section2'
+					}, void 0, _jsx('ul', {}, void 0, _jsx('li', {}, void 0, _jsx('img', {
+						src: data.logo,
+						'data-toggle': 'tooltip',
+						'data-placement': 'top',
+						title: 'Channel Logo'
+					})), _jsx('li', {}, void 0, _jsx('img', {
+						src: data.divider
+					})), _jsx('li', {}, void 0, _jsx('img', {
+						src: data.quickCategory,
+						'data-toggle': 'tooltip',
+						'data-placement': 'top',
+						title: 'Quick Category'
+					})), _jsx('li', {}, void 0, _jsx('img', {
+						src: data.divider
+					})), _jsx('li', {}, void 0, _jsx('img', {
+						src: data.contentType,
+						'data-toggle': 'tooltip',
+						'data-placement': 'top',
+						title: 'Content Type'
+					})))), _jsx('div', {
+						className: 'content-card-footer'
+					}, void 0, _jsx('ul', {}, void 0, _jsx('li', {}, void 0, _jsx('i', {
+						className: 'ico-icon42 footer-icons',
+						'aria-hidden': 'true',
+						'data-toggle': 'tooltip',
+						'data-placement': 'top',
+						title: 'Trending'
+					}), _jsx('span', {
+						className: 'text-muted'
+					}, void 0, data.trending)), _jsx('li', {}, void 0, _jsx('img', {
+						src: '../assets/images/content-card/property-divider.png',
+						alt: 'card-footer items'
+					})), _jsx('li', {}, void 0, _jsx('i', {
+						className: 'ico-icon44 footer-icons text-muted',
+						'aria-hidden': 'true',
+						'data-toggle': 'tooltip',
+						'data-placement': 'top',
+						title: 'Comments'
+					}), _jsx('span', {
+						className: 'text-muted'
+					}, void 0, data.comments)), _jsx('li', {}, void 0, _jsx('img', {
+						src: '../assets/images/content-card/property-divider.png',
+						alt: 'card-footer items'
+					})), _jsx('li', {}, void 0, _jsx('i', {
+						className: 'ico-icon43 footer-icons text-muted',
+						'aria-hidden': 'true',
+						'data-toggle': 'tooltip',
+						'data-placement': 'top',
+						title: 'Likes'
+					}), _jsx('span', {
+						className: 'text-muted'
+					}, void 0, data.likes)))))));
+				});
+			}
+		}
+
+		return _jsx('div', {}, void 0, contentMapping);
+	}
+}
+
+function mapStateToProps(state) {
+	const contentdata = state;
+	return { contentdata };
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		getContentCard: () => {
+			dispatch((0, _contentcard_action.getContentCard)());
+		}
+	};
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ContentCard);

@@ -1,0 +1,136 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _YourCollection = require('./YourCollection');
+
+var _YourCollection2 = _interopRequireDefault(_YourCollection);
+
+var _quickCategories_action = require('../actions/quickCategories_action');
+
+var _TrendingTopics = require('./TrendingTopics');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class QuickCategories extends _react.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			//to activate css of icon on click iff category has data to show
+			isActive: "",
+
+			//to render YourCollection component--by default quick categories will render
+			showYourCollection: false
+
+		};
+		this.changeClassHandle = this.changeClassHandle.bind(this);
+	}
+
+	componentWillMount() {
+		this.props.getCategories();
+	}
+
+	changeClassHandle(data) {
+		this.setState({ isActive: data });
+	}
+
+	// handler for toggleSidebar event
+	toggleSidebar() {
+		this.setState({ showYourCollection: !this.state.showYourCollection });
+	}
+
+	// quick categories default data
+	quickCategories() {
+
+		if (this.props.categories.viewquickCategories_Data.result) {
+			if (this.props.categories.viewquickCategories_Data.result.length > 0) {
+				var my = this;
+				var CategoriesMaping = this.props.categories.viewquickCategories_Data.result.map(function (data) {
+					return _jsx('div', {
+						className: my.state.isActive == data ? "quick_categories_item border_right hover" : "quick_categories_item border_right"
+					}, data.id, _jsx('a', {
+						href: '#',
+						onClick: () => {
+							my.changeClassHandle(data);
+						}
+					}, void 0, _jsx('div', {
+						className: 'img',
+						'data-toggle': 'tooltip',
+						'data-placement': 'top',
+						title: data.category
+					}, void 0, _jsx('img', {
+						src: data.image
+					})), _jsx('p', {}, void 0, data.category)));
+				});
+			}
+		}
+
+		return _jsx('div', {
+			className: 'sidebar1'
+		}, void 0, _jsx('div', {
+			className: 'row no_margin quick-heading'
+		}, void 0, _jsx('div', {
+			className: 'col-sm-8 no_padding padding_left'
+		}, void 0, _jsx('p', {
+			className: 'text no_padding'
+		}, void 0, 'Quick Categories')), _jsx('div', {
+			className: 'col-sm-4 quick-icon'
+		}, void 0, _jsx('div', {
+			className: 'reset',
+			'data-toggle': 'tooltip',
+			'data-placement': 'top',
+			title: 'Turn Button'
+		}, void 0, _jsx('img', {
+			src: '../assets/images/sidebar_icons/reset.png',
+			onClick: this.toggleSidebar.bind(this)
+		})))), _jsx('div', {
+			className: 'row1'
+		}, void 0, CategoriesMaping));
+	}
+
+	// YourCollection sidebar data
+	urCollection() {
+		return _jsx(_YourCollection2.default, {
+			toggleMe: this.toggleSidebar.bind(this)
+		});
+	}
+
+	render() {
+		let sidebar1;
+		if (this.state.showYourCollection) {
+			sidebar1 = this.urCollection();
+		} else {
+			sidebar1 = this.quickCategories();
+		}
+
+		return _jsx('div', {}, void 0, sidebar1);
+	}
+}
+function mapStateToProps(state) {
+	const categories = state;
+	return { categories };
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		getCategories: () => {
+			dispatch((0, _quickCategories_action.getQuickCategories_Data)());
+		}
+	};
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(QuickCategories);

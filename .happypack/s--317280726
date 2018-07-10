@@ -1,0 +1,146 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _Search = require('./Search');
+
+var _Search2 = _interopRequireDefault(_Search);
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class Header extends _react.Component {
+
+	componentDidMount() {
+		// to change css of layout selectors
+		(0, _jquery2.default)(document).ready(function () {
+			(0, _jquery2.default)(".3colview").css("background-color", "#1b2e9d");
+			(0, _jquery2.default)(".3colview").on("click", function () {
+				(0, _jquery2.default)(this).css("background-color", "#1b2e9d");
+				(0, _jquery2.default)(".4colview").css("background-color", "transparent");
+			});
+			(0, _jquery2.default)(".4colview").on("click", function () {
+				(0, _jquery2.default)(this).css("background-color", "#1b2e9d");
+				(0, _jquery2.default)(".3colview").css("background-color", "transparent");
+			});
+		});
+
+		// to change css of sort buttons
+		(0, _jquery2.default)(document).ready(function () {
+			(0, _jquery2.default)(".likeSort").css("background-color", "transparent");
+			(0, _jquery2.default)(".trendSort").css("background-color", "transparent");
+			(0, _jquery2.default)(".likeSort").on("click", function () {
+				(0, _jquery2.default)(this).css("background-color", "#1b2e9d");
+				(0, _jquery2.default)(".trendSort").css("background-color", "transparent");
+			});
+			(0, _jquery2.default)(".trendSort").on("click", function () {
+				(0, _jquery2.default)(this).css("background-color", "#1b2e9d");
+				(0, _jquery2.default)(".likeSort").css("background-color", "transparent");
+			});
+		});
+	}
+
+	render() {
+		return _jsx('div', {
+			className: 'container-fluid'
+		}, void 0, _jsx('div', {
+			className: 'row header-section'
+		}, void 0, _jsx('div', {
+			className: 'col-md-2 col-lg-2  header-logo',
+			'data-toggle': 'tooltip',
+			'data-placement': 'top',
+			title: 'Risorso'
+		}, void 0, _jsx('a', {
+			href: '#'
+		}, void 0, _jsx('img', {
+			src: '../assets/images/main_logo.png'
+		}))), _jsx('div', {
+			className: 'col-md-6 col-lg-6'
+		}, void 0, _jsx(_Search2.default, {})), _jsx('div', {
+			className: 'col-md-2 col-lg-2'
+		}, void 0, _jsx('ul', {
+			className: 'list-icons'
+		}, void 0, _jsx('li', {}, void 0, _jsx('i', {
+			className: 'ico-icon30 3colview',
+			'aria-hidden': 'true',
+			'data-toggle': 'tooltip',
+			'data-placement': 'top',
+			title: '3 Column View',
+			onClick: this.props.layout3
+		})), _jsx('li', {}, void 0, _jsx('i', {
+			className: 'ico-icon29 4colview',
+			'aria-hidden': 'true',
+			'data-toggle': 'tooltip',
+			'data-placement': 'top',
+			title: '4 Column View',
+			onClick: this.props.layout4
+		})), _jsx('li', {}, void 0, _jsx('i', {
+			className: 'ico-icon28 likeSort',
+			'aria-hidden': 'true',
+			'data-toggle': 'tooltip',
+			'data-placement': 'top',
+			title: 'Sort by Likes',
+			onClick: this.props.likesort
+		})), _jsx('li', {}, void 0, _jsx('i', {
+			className: 'ico-icon27 trendSort',
+			'aria-hidden': 'true',
+			'data-toggle': 'tooltip',
+			'data-placement': 'top',
+			title: 'Sort By Trending',
+			onClick: this.props.trendsort
+		})))), _jsx('div', {
+			className: 'col-md-2 col-lg-2 video-header'
+		}, void 0, _jsx('div', {
+			className: 'dropdown',
+			'data-toggle': 'tooltip',
+			'data-placement': 'top',
+			title: 'Videos'
+		}, void 0, _jsx('button', {
+			className: 'btn dropdown-toggle video-button',
+			type: 'button',
+			id: 'dropdownMenuButton',
+			'data-toggle': 'dropdown',
+			'aria-haspopup': 'true',
+			'aria-expanded': 'false'
+		}, void 0, 'Videos'), _jsx('div', {
+			className: 'dropdown-menu video-list',
+			'aria-labelledby': 'dropdownMenuButton'
+		}, void 0, _jsx('ul', {
+			className: 'menu_list'
+		}, void 0, _jsx('li', {
+			className: 'list_item'
+		}, void 0, _jsx('a', {
+			className: 'dropdown-item',
+			href: '#'
+		}, void 0, 'Videos')), _jsx('li', {
+			className: 'list_item'
+		}, void 0, _jsx('a', {
+			className: 'dropdown-item',
+			href: '#'
+		}, void 0, 'Images')), _jsx('li', {
+			className: 'list_item'
+		}, void 0, _jsx('a', {
+			className: 'dropdown-item',
+			href: '#'
+		}, void 0, 'List'))))))));
+	}
+}
+
+exports.default = Header;

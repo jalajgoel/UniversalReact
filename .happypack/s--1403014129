@@ -1,0 +1,12 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactAsyncComponent = require('react-async-component');
+
+exports.default = (0, _reactAsyncComponent.asyncComponent)({
+  // include home and about route in same chunk e.g main
+  resolve: () => System.import( /* webpackChunkName: "main" */'./HomeRoute')
+});

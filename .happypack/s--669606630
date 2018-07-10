@@ -1,0 +1,109 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/ParentLogin.js'; /*
+                                                                                                         	Parent Login is the parent component for login and and sign up
+                                                                                                         */
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _Login = require('./Login');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+var _SignUp = require('./SignUp');
+
+var _SignUp2 = _interopRequireDefault(_SignUp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class Parentlogin extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      check: ''
+    };
+  }
+  render() {
+    return _react2.default.createElement(
+      'div',
+      { className: 'parentlogin', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        }
+      },
+      _react2.default.createElement(
+        'div',
+        { className: 'row no_margin', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 20
+          }
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-12', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 21
+            }
+          },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-6 login_col no_padding', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 22
+              }
+            },
+            _react2.default.createElement(_Login2.default, {
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 23
+              }
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-6 no_padding', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 25
+              }
+            },
+            _react2.default.createElement(_SignUp2.default, {
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 26
+              }
+            })
+          )
+        )
+      )
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  const check = state;
+  return { check };
+}
+
+function mapDispatchToProps(dispatch) {
+  return { dispatch };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Parentlogin);

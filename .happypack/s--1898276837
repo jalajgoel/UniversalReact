@@ -1,0 +1,278 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Spacetab.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _Login = require('./Login');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+var _universalCookie = require('universal-cookie');
+
+var _universalCookie2 = _interopRequireDefault(_universalCookie);
+
+var _userProfile_action = require('../actions/userProfile_action');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Spacetab = function (_Component) {
+  _inherits(Spacetab, _Component);
+
+  function Spacetab(props) {
+    _classCallCheck(this, Spacetab);
+
+    var _this = _possibleConstructorReturn(this, (Spacetab.__proto__ || Object.getPrototypeOf(Spacetab)).call(this, props));
+
+    _this.state = {
+      logButton: 'login'
+    };
+    return _this;
+  }
+
+  _createClass(Spacetab, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var cookies = new _universalCookie2.default();
+      var space = cookies.get('risorsoLoggedIn');
+      if (space) {
+        // this.props.fetchData(space);
+        this.setState({
+          logButton: 'logout'
+        });
+      } else {
+        // console.log(err);
+      }
+    }
+  }, {
+    key: 'handleAuth',
+    value: function handleAuth() {
+      fetch('http://192.168.20.127:4000/api/connect/facebook', {
+        method: 'get'
+      }).then(function (res) {
+        if (res) {
+          window.open(res.url);
+
+          // return dispatch(handleAboutUs(res));
+        }
+        // return dispatch(handleFormError(res));
+      });
+      // .catch(err => dispatch(handleFormError(err)));
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (this.props.spaceTabData.fetchUserProfile.response) {
+        if (this.props.spaceTabData.fetchUserProfile.response.length > 0) {}
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'sidebar3', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 48
+          }
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'row no_margin', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 49
+            }
+          },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-12 no_padding', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 50
+              }
+            },
+            _react2.default.createElement(
+              'div',
+              { className: 'row no_margin space', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 51
+                }
+              },
+              _react2.default.createElement(
+                'div',
+                { className: 'col-sm-3 col-lg-3 col-md-3 space_pic', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 52
+                  }
+                },
+                _react2.default.createElement(
+                  'div',
+                  {
+                    className: 'space_profile space_tabs',
+                    'data-toggle': 'tooltip',
+                    'data-placement': 'top',
+                    title: 'Profile Image',
+                    __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 53
+                    }
+                  },
+                  _react2.default.createElement(
+                    _reactRouterDom.NavLink,
+                    { to: '/userprofile', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 59
+                      }
+                    },
+                    _react2.default.createElement('img', { src: '../assets/images/user_ico.png', className: 'space_image', __self: this,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 60
+                      }
+                    })
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                {
+                  className: 'col-sm-3 col-lg-3 col-md-3 space_messages space_tabs',
+                  'data-toggle': 'tooltip',
+                  'data-placement': 'top',
+                  title: 'Messages',
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 64
+                  }
+                },
+                _react2.default.createElement('img', {
+                  src: '../assets/images/sidebar_icons/message-icon.png',
+                  className: 'space_image',
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 70
+                  }
+                })
+              ),
+              _react2.default.createElement(
+                'div',
+                {
+                  className: 'col-sm-3 col-lg-3 col-md-3 space_edit space_tabs',
+                  'data-toggle': 'tooltip',
+                  'data-placement': 'top',
+                  title: 'Create',
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 75
+                  }
+                },
+                _react2.default.createElement('img', {
+                  src: '../assets/images/sidebar_icons/edit-icon.png',
+                  className: 'space_image',
+                  onClick: this.handleAuth.bind(this),
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 81
+                  }
+                })
+              ),
+              _react2.default.createElement(
+                'div',
+                {
+                  className: 'col-sm-3 col-lg-3 col-md-3 space_log space_tabs',
+                  'data-toggle': 'tooltip',
+                  'data-placement': 'top',
+                  title: 'Login',
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 87
+                  }
+                },
+                _react2.default.createElement(
+                  _reactRouterDom.NavLink,
+                  { to: '/login', __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 93
+                    }
+                  },
+                  _react2.default.createElement('img', { src: '../assets/images/sidebar_icons/log-out.png', className: 'space_image', __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 94
+                    }
+                  })
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Spacetab;
+}(_react.Component);
+
+function mapStateToProps(state) {
+  var spaceTabData = state;
+  return { spaceTabData: spaceTabData };
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    // fetchData: (spaceTabData) => {
+    //   dispatch(getData(spaceTabData));
+    // },
+  };
+}
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Spacetab);
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Spacetab, 'Spacetab', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Spacetab.js');
+
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Spacetab.js');
+
+  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Spacetab.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Spacetab.js');
+}();
+
+;

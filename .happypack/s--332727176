@@ -1,0 +1,167 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _YourCollection = require('./YourCollection');
+
+var _YourCollection2 = _interopRequireDefault(_YourCollection);
+
+var _quickCategories_action = require('../actions/quickCategories_action');
+
+var _TrendingTopics = require('./TrendingTopics');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var QuickCategories = function (_Component) {
+	_inherits(QuickCategories, _Component);
+
+	function QuickCategories(props) {
+		_classCallCheck(this, QuickCategories);
+
+		var _this = _possibleConstructorReturn(this, (QuickCategories.__proto__ || Object.getPrototypeOf(QuickCategories)).call(this, props));
+
+		_this.state = {
+			//to activate css of icon on click iff category has data to show
+			isActive: "",
+
+			//to render YourCollection component--by default quick categories will render
+			showYourCollection: false
+
+		};
+		_this.changeClassHandle = _this.changeClassHandle.bind(_this);
+		return _this;
+	}
+
+	_createClass(QuickCategories, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.props.getCategories();
+		}
+	}, {
+		key: 'changeClassHandle',
+		value: function changeClassHandle(data) {
+			this.setState({ isActive: data });
+		}
+
+		// handler for toggleSidebar event
+
+	}, {
+		key: 'toggleSidebar',
+		value: function toggleSidebar() {
+			this.setState({ showYourCollection: !this.state.showYourCollection });
+		}
+
+		// quick categories default data
+
+	}, {
+		key: 'quickCategories',
+		value: function quickCategories() {
+
+			if (this.props.categories.viewquickCategories_Data.result) {
+				if (this.props.categories.viewquickCategories_Data.result.length > 0) {
+					var my = this;
+					var CategoriesMaping = this.props.categories.viewquickCategories_Data.result.map(function (data) {
+						return _jsx('div', {
+							className: my.state.isActive == data ? "quick_categories_item border_right hover" : "quick_categories_item border_right"
+						}, data.id, _jsx('a', {
+							href: '#',
+							onClick: function onClick() {
+								my.changeClassHandle(data);
+							}
+						}, void 0, _jsx('div', {
+							className: 'img',
+							'data-toggle': 'tooltip',
+							'data-placement': 'top',
+							title: data.category
+						}, void 0, _jsx('img', {
+							src: data.image
+						})), _jsx('p', {}, void 0, data.category)));
+					});
+				}
+			}
+
+			return _jsx('div', {
+				className: 'sidebar1'
+			}, void 0, _jsx('div', {
+				className: 'row no_margin quick-heading'
+			}, void 0, _jsx('div', {
+				className: 'col-sm-8 no_padding padding_left'
+			}, void 0, _jsx('p', {
+				className: 'text no_padding'
+			}, void 0, 'Quick Categories')), _jsx('div', {
+				className: 'col-sm-4 quick-icon'
+			}, void 0, _jsx('div', {
+				className: 'reset',
+				'data-toggle': 'tooltip',
+				'data-placement': 'top',
+				title: 'Turn Button'
+			}, void 0, _jsx('img', {
+				src: '../assets/images/sidebar_icons/reset.png',
+				onClick: this.toggleSidebar.bind(this)
+			})))), _jsx('div', {
+				className: 'row1'
+			}, void 0, CategoriesMaping));
+		}
+
+		// YourCollection sidebar data
+
+	}, {
+		key: 'urCollection',
+		value: function urCollection() {
+			return _jsx(_YourCollection2.default, {
+				toggleMe: this.toggleSidebar.bind(this)
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var sidebar1 = void 0;
+			if (this.state.showYourCollection) {
+				sidebar1 = this.urCollection();
+			} else {
+				sidebar1 = this.quickCategories();
+			}
+
+			return _jsx('div', {}, void 0, sidebar1);
+		}
+	}]);
+
+	return QuickCategories;
+}(_react.Component);
+
+function mapStateToProps(state) {
+	var categories = state;
+	return { categories: categories };
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		getCategories: function getCategories() {
+			dispatch((0, _quickCategories_action.getQuickCategories_Data)());
+		}
+	};
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(QuickCategories);

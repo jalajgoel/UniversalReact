@@ -1,0 +1,138 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/DemoApp/AsyncCounterRoute/CounterRoute.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable react/no-unescaped-entities */
+
+
+var CounterRoute = function (_Component) {
+  _inherits(CounterRoute, _Component);
+
+  function CounterRoute(props) {
+    _classCallCheck(this, CounterRoute);
+
+    var _this = _possibleConstructorReturn(this, (CounterRoute.__proto__ || Object.getPrototypeOf(CounterRoute)).call(this, props));
+
+    _this.incrementCounter = _this.incrementCounter.bind(_this);
+    _this.state = { counter: 0 };
+    return _this;
+  }
+
+  _createClass(CounterRoute, [{
+    key: 'incrementCounter',
+    value: function incrementCounter() {
+      this.setState({ counter: this.state.counter + 1 });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 17
+          }
+        },
+        _react2.default.createElement(
+          'h3',
+          {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 18
+            }
+          },
+          'Counter'
+        ),
+        _react2.default.createElement(
+          'p',
+          {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 19
+            }
+          },
+          _react2.default.createElement(
+            'em',
+            {
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 20
+              }
+            },
+            'This is a small demo component that contains state.  It\'s useful for testing the hot reloading experience of an asyncComponent.'
+          )
+        ),
+        _react2.default.createElement(
+          'p',
+          {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 25
+            }
+          },
+          'Current value: ',
+          this.state.counter
+        ),
+        _react2.default.createElement(
+          'p',
+          {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 28
+            }
+          },
+          _react2.default.createElement(
+            'button',
+            { onClick: this.incrementCounter, __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 29
+              }
+            },
+            'Increment'
+          )
+        )
+      );
+    }
+  }]);
+
+  return CounterRoute;
+}(_react.Component);
+
+var _default = CounterRoute;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(CounterRoute, 'CounterRoute', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/DemoApp/AsyncCounterRoute/CounterRoute.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/DemoApp/AsyncCounterRoute/CounterRoute.js');
+}();
+
+;

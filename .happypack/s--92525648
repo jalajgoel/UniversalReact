@@ -1,0 +1,79 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.quickCategories_Success = quickCategories_Success;
+exports.getQuickCategories_Data = getQuickCategories_Data;
+const QUICK = exports.QUICK = 'QUICK';
+
+function quickCategories_Success(res) {
+	return {
+		type: QUICK,
+		payload: res
+	};
+}
+
+function getQuickCategories_Data() {
+
+	return (dispatch, state) => {
+		var quickData = [{
+			id: 1,
+			image: "../assets/images/sidebar_icons/sidebar-technology.png",
+			category: "Technology"
+		}, {
+			id: 2,
+			image: "../assets/images/sidebar_icons/sidebar-games.png",
+			category: "Games"
+		}, {
+			id: 3,
+			image: "../assets/images/sidebar_icons/sidebar-food.png",
+			category: "Food"
+		}, {
+			id: 4,
+			image: "../assets/images/sidebar_icons/sidebar-art.png",
+			category: "Art"
+		}, {
+			id: 5,
+			image: "../assets/images/sidebar_icons/sidebar-drink.png",
+			category: "Drink"
+		}, {
+			id: 6,
+			image: "../assets/images/sidebar_icons/sidebar-travel.png",
+			category: "Travel"
+		}, {
+			id: 7,
+			image: "../assets/images/sidebar_icons/sidebar-science.png",
+			category: "Science"
+		}, {
+			id: 8,
+			image: "../assets/images/sidebar_icons/sidebar-health.png",
+			category: "Health"
+		}, {
+			id: 9,
+			image: "../assets/images/sidebar_icons/sidebar-funny.png",
+			category: "Funny"
+		}, {
+			id: 10,
+			image: "../assets/images/sidebar_icons/sidebar-Interesting.png",
+			category: "Interesting"
+		}, {
+			id: 11,
+			image: "../assets/images/sidebar_icons/sidebar-cars.png",
+			category: "Cars"
+		}, {
+			id: 12,
+			image: "../assets/images/sidebar_icons/sidebar-sport.png",
+			category: "Sports"
+		}, {
+			id: 13,
+			image: "../assets/images/sidebar_icons/sidebar-news.png",
+			category: "News"
+		}, {
+			id: 14,
+			image: "../assets/images/sidebar_icons/sidebar-all-category.png",
+			category: "All-Categories"
+		}];
+		return dispatch(quickCategories_Success(quickData));
+	};
+}

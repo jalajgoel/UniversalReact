@@ -1,0 +1,43 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = viewUpload;
+
+var _upload_action = require('../actions/upload_action');
+
+var _upload_action2 = _interopRequireDefault(_upload_action);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialstate = {
+  result: []
+};
+
+function viewUpload() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialstate;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'UPLOAD':
+      return {
+        result: action.payload
+      };
+    default:
+      return state;
+  }
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(initialstate, 'initialstate', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/reducers/upload_reducer.js');
+
+  __REACT_HOT_LOADER__.register(viewUpload, 'viewUpload', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/reducers/upload_reducer.js');
+}();
+
+;

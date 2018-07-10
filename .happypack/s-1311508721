@@ -1,0 +1,30 @@
+SyntaxError: Unexpected token (19:5)
+
+[0m [90m 17 | [39m	}
+ [90m 18 | [39m
+[31m[1m>[22m[39m[90m 19 | [39m	[36mvar[39m [33mModal[39m[33m=[39m [33mReact[39m[33m.[39mcreateClass({
+ [90m    | [39m	    [31m[1m^[22m[39m
+ [90m 20 | [39m		render[33m:[39m [36mfunction[39m(){
+ [90m 21 | [39m			[36mreturn[39m(
+ [90m 22 | [39m				[33m<[39m[33mdiv[39m className[33m=[39m[32m"modal fade"[39m[33m>[39m[0m
+
+BabelLoaderError: SyntaxError: Unexpected token (19:5)
+
+[0m [90m 17 | [39m	}
+ [90m 18 | [39m
+[31m[1m>[22m[39m[90m 19 | [39m	[36mvar[39m [33mModal[39m[33m=[39m [33mReact[39m[33m.[39mcreateClass({
+ [90m    | [39m	    [31m[1m^[22m[39m
+ [90m 20 | [39m		render[33m:[39m [36mfunction[39m(){
+ [90m 21 | [39m			[36mreturn[39m(
+ [90m 22 | [39m				[33m<[39m[33mdiv[39m className[33m=[39m[32m"modal fade"[39m[33m>[39m[0m
+
+    at transpile (/home/spineor/risorso/node_modules/babel-loader/lib/index.js:64:13)
+    at Object.module.exports (/home/spineor/risorso/node_modules/babel-loader/lib/index.js:174:20)
+    at applySyncOrAsync (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:341:21)
+    at apply (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:268:5)
+    at /home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:131:7
+    at applyPitchLoader (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:184:14)
+    at applyPitchLoader (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:192:14)
+    at applyPitchLoaders (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:222:4)
+    at applyLoaders (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:116:3)
+    at HappyWorker.compile (/home/spineor/risorso/node_modules/happypack/lib/HappyWorker.js:32:3)

@@ -1,0 +1,70 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _reactRouter = require('react-router');
+
+var _Login = require('./Login');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class Spacetab extends _react.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+
+		return _jsx('div', {
+			className: 'sidebar3'
+		}, void 0, _jsx('div', {
+			className: 'row no_margin'
+		}, void 0, _jsx('div', {
+			className: 'col-sm-12 no_padding'
+		}, void 0, _jsx('div', {
+			className: 'row no_margin space'
+		}, void 0, _jsx('div', {
+			className: 'col-sm-3 col-lg-3 col-md-3 space_pic'
+		}, void 0, _jsx('div', {
+			className: 'space_profile space_tabs'
+		}, void 0, _jsx('img', {
+			src: '../assets/images/user_ico.png',
+			className: 'space_image'
+		}))), _jsx('div', {
+			className: 'col-sm-3 col-lg-3 col-md-3 space_messages'
+		}, void 0, _jsx('span', {
+			className: 'space_tabs'
+		}, void 0, _jsx('i', {
+			className: 'fa fa-envelope-o',
+			'aria-hidden': 'true'
+		}))), _jsx('div', {
+			className: 'col-sm-3 col-lg-3 col-md-3 space_edit'
+		}, void 0, _jsx('span', {
+			className: 'space_tabs'
+		})), _jsx('div', {
+			className: 'col-sm-3 col-lg-3 col-md-3 space_log'
+		}, void 0, _jsx('span', {
+			className: 'space_tabs'
+		}, void 0, _jsx('i', {
+			className: 'ico-icon26'
+		})))))));
+	}
+}
+
+exports.default = Spacetab;

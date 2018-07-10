@@ -1,0 +1,415 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Login.js';
+// import Profile from './Profile'
+// import App from './App';
+
+// import { instanceOf } from 'prop-types';
+// import { withCookies, Cookies } from 'react-cookie';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _login_action = require('../actions/login_action');
+
+var _reactRouterDom = require('react-router-dom');
+
+var _universalCookie = require('universal-cookie');
+
+var _universalCookie2 = _interopRequireDefault(_universalCookie);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class Login extends _react.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+      showForgetPassword: false,
+      message: '',
+      email_msg: '',
+      password_msg: ''
+    };
+  }
+  componentWillMount() {}
+  canBeSubmited() {
+    const { email, password } = this.state;
+
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (email == ' ' && password == ' ') {
+      return false;
+    }
+    if (reg.test(email) && password.length == 4) {
+      return true;
+    }
+    const isEnabled = false;
+    return isEnabled;
+  }
+
+  // handler for email
+  handleEmailInput(e) {
+    this.setState({ email: e.target.value });
+    const email = e.target.value;
+    // for email error message
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (reg.test(email)) {
+      this.setState({ email_msg: ' ' });
+      this.setState({ email });
+    } else {
+      this.setState({ email_msg: 'Enter valid email e.g. example@example.com' });
+    }
+  }
+
+  handlePasswordInput(e) {
+    this.setState({ password: e.target.value });
+    const pswd = e.target.value;
+
+    // for password error message
+    const numbers = /^[0-9]+$/;
+
+    // let pswd= this.state.password
+    if (!(pswd.length == 4)) {
+      this.setState({ password_msg: 'Incorrect password' });
+    } else if (!numbers.test(this.state.password)) {
+      this.setState({ password_msg: 'Incorrect password' });
+    } else {
+      this.setState({ password_msg: ' ' });
+      this.setState({ password: pswd });
+    }
+  }
+
+  login(e) {
+    e.preventDefault();
+    const email = this.state.email;
+    const password = this.state.password;
+
+    this.props.fetchLogin(email, password);
+
+    // to reset  input fields
+    this.setState({ email: '', password: '' });
+  }
+
+  forgetPassword() {
+    this.setState({ showForgetPassword: !this.state.showForgetPassword });
+  }
+
+  handleForgetPassword(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({ [name]: value });
+  }
+
+  fp_submit(e) {
+    e.preventDefault();
+    const email = this.state;
+    this.props.fetchForgetPassword(this.state.email);
+  }
+
+  render() {
+    const isEnabled = this.canBeSubmited();
+    const token = this.props.logindata.fetchLogin.response.token;
+    const cookie_token = this.props.logindata.fetchLogin.response.token;
+    const cookies = new _universalCookie2.default();
+    if (!(token == undefined)) {
+      cookies.set('risorsoLoggedIn', token, { path: '/' });
+    }
+
+    // document.cookie= "loggedIn_token="+token
+    // var x= document.cookie
+    if (token) {
+      return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 113
+        }
+      });
+    }
+
+    let res_received;
+    if (this.props.logindata.fetchLogin.response.message) {
+      res_received = _react2.default.createElement(
+        'span',
+        { className: 'response', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 119
+          }
+        },
+        this.props.logindata.fetchLogin.response.message
+      );
+    }
+
+    return _react2.default.createElement(
+      'div',
+      { className: 'login_section', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 126
+        }
+      },
+      _react2.default.createElement(
+        'div',
+        { className: 'login_img', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 127
+          }
+        },
+        _react2.default.createElement(
+          'span',
+          { className: 'login_text', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 128
+            }
+          },
+          'Log In'
+        ),
+        _react2.default.createElement('img', { src: '../assets/images/login/login.png', alt: 'login_img', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 129
+          }
+        })
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'login_input', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 131
+          }
+        },
+        _react2.default.createElement(
+          'form',
+          { onSubmit: this.login.bind(this), __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 132
+            }
+          },
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 133
+              }
+            },
+            _react2.default.createElement('input', {
+              type: 'email',
+              name: 'email',
+              className: 'user_inputs_login form-control password_note',
+              placeholder: 'Email',
+              value: this.state.email,
+              onChange: this.handleEmailInput.bind(this),
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 134
+              }
+            }),
+            _react2.default.createElement(
+              'span',
+              { className: 'errorMessage', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 142
+                }
+              },
+              this.state.email_msg
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 146
+              }
+            },
+            _react2.default.createElement('input', {
+              type: 'password',
+              name: 'password',
+              className: 'user_inputs_login form-control password_note',
+              placeholder: 'Password',
+              value: this.state.password,
+              onChange: this.handlePasswordInput.bind(this),
+              maxLength: '4',
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 147
+              }
+            }),
+            _react2.default.createElement('span', { className: 'errorMessage', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 156
+              }
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 160
+              }
+            },
+            _react2.default.createElement(
+              'span',
+              {
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 161
+                }
+              },
+              _react2.default.createElement(
+                'a',
+                { onClick: this.forgetPassword.bind(this), __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 162
+                  }
+                },
+                'Forgot password?'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group text-right', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 165
+              }
+            },
+            _react2.default.createElement('input', {
+              type: 'submit',
+              name: 'Login_submit',
+              value: 'Log In',
+              className: isEnabled == true ? 'submit_button' : 'IMDisabled',
+              disabled: !isEnabled,
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 166
+              }
+            })
+          )
+        ),
+        res_received
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: this.state.showForgetPassword == false ? 'hide-modal' : 'modal', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 177
+          }
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'modal-content', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 178
+            }
+          },
+          _react2.default.createElement(
+            'form',
+            { onSubmit: this.fp_submit.bind(this), __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 179
+              }
+            },
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 180
+                }
+              },
+              _react2.default.createElement('input', {
+                type: 'email',
+                className: 'form-control',
+                name: 'email',
+                placeholder: 'Enter Registered Your Email',
+                value: this.state.email,
+                onChange: this.handleForgetPassword.bind(this),
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 181
+                }
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group text-right', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 190
+                }
+              },
+              _react2.default.createElement('input', { type: 'submit', name: 'fp_submit', value: 'Send', className: 'submit_button', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 191
+                }
+              }),
+              _react2.default.createElement(
+                'button',
+                {
+                  className: 'submit_button close_btn',
+                  onClick: this.forgetPassword.bind(this),
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 192
+                  }
+                },
+                'Close'
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  const logindata = state;
+  return { logindata };
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    fetchLogin: (email, password) => {
+      dispatch((0, _login_action.fetchLogin)(email, password));
+    },
+    fetchForgetPassword: email => {
+      dispatch((0, _login_action.fetchForgetPassword)(email));
+    }
+  };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,0 +1,23 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = require('redux');
+
+var _quickCategories_reducer = require('./quickCategories_reducer');
+
+var _quickCategories_reducer2 = _interopRequireDefault(_quickCategories_reducer);
+
+var _contentcard_reducer = require('./contentcard_reducer');
+
+var _contentcard_reducer2 = _interopRequireDefault(_contentcard_reducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var rootReducer = (0, _redux.combineReducers)({
+  viewquickCategories_Data: _quickCategories_reducer2.default, viewContentCard: _contentcard_reducer2.default
+});
+
+exports.default = rootReducer;

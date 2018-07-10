@@ -1,0 +1,24 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _path = require('path');
+
+var _appRootDir = require('app-root-dir');
+
+var _appRootDir2 = _interopRequireDefault(_appRootDir);
+
+var _config = require('../../config');
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Middleware to serve our service worker.
+function serviceWorkerMiddleware(req, res, next) {
+  res.sendFile((0, _path.resolve)(_appRootDir2.default.get(), (0, _config2.default)('bundles.client.outputPath'), (0, _config2.default)('serviceWorker.fileName')));
+} /* eslint-disable no-unused-vars */
+
+exports.default = serviceWorkerMiddleware;

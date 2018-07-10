@@ -1,0 +1,23 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = viewquickCategories_Data;
+
+var _quickCategories_action = require("../actions/quickCategories_action");
+
+const initialState = {
+	result: []
+};
+
+function viewquickCategories_Data(state = initialState, action) {
+	switch (action.type) {
+		case "QUICK":
+			return {
+				result: action.payload
+			};
+		default:
+			return state;
+	}
+};

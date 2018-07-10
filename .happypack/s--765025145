@@ -1,0 +1,261 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var _jsxFileName = '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/YourCollection.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var YourCollection = function (_Component) {
+	_inherits(YourCollection, _Component);
+
+	function YourCollection(props) {
+		_classCallCheck(this, YourCollection);
+
+		var _this = _possibleConstructorReturn(this, (YourCollection.__proto__ || Object.getPrototypeOf(YourCollection)).call(this, props));
+
+		_this.state = {
+			bgcolor: ''
+		};
+		return _this;
+	}
+
+	_createClass(YourCollection, [{
+		key: 'change_color',
+		value: function change_color() {
+			this.setState({ bgcolor: true });
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'sidebar1-1', __self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 17
+					}
+				},
+				_react2.default.createElement(
+					'div',
+					{ className: 'row no_margin yourCollection_Heading', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 18
+						}
+					},
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-sm-8 no_padding padding_left', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 19
+							}
+						},
+						_react2.default.createElement(
+							'p',
+							{ className: 'text no_padding', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 20
+								}
+							},
+							'Your Collection'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-sm-4 quick-icon', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 22
+							}
+						},
+						_react2.default.createElement(
+							'div',
+							{ className: 'reset', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Turn Button', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 23
+								}
+							},
+							_react2.default.createElement('img', { src: '../assets/images/sidebar_icons/reset.png', onClick: this.props.toggleMe, __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 24
+								}
+							})
+						)
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'row no_margin', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 28
+						}
+					},
+					_react2.default.createElement(
+						'div',
+						{ className: this.state.bgcolor ? "col-sm-6 no_padding yourCollection_data bg_color" : "col-sm-6 no_padding yourCollection_data", __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 29
+							}
+						},
+						_react2.default.createElement('i', {
+							onClick: this.change_color.bind(this),
+							className: 'ico-icon15 yourCollection-icons',
+							'aria-hidden': 'true',
+							'data-toggle': 'tooltip',
+							'data-placement': 'top',
+							title: 'Bookmarks', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 30
+							}
+						}),
+						_react2.default.createElement(
+							'span',
+							{ className: 'yourCollection-subtitles', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 38
+								}
+							},
+							'Bookmarks'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-sm-6 no_padding yourCollection_data', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 40
+							}
+						},
+						_react2.default.createElement('i', {
+							onClick: this.change_color.bind(this),
+							className: 'ico-icon20  yourCollection-icons',
+							'aria-hidden': 'true',
+							'data-toggle': 'tooltip',
+							'data-placement': 'top',
+							title: 'Feeds', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 41
+							}
+						}),
+						_react2.default.createElement(
+							'span',
+							{ className: 'yourCollection-subtitles', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 50
+								}
+							},
+							'Feeds'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-sm-6 no_padding yourCollection_data', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 52
+							}
+						},
+						_react2.default.createElement('i', {
+							onClick: this.change_color.bind(this),
+							className: 'ico-icon37 yourCollection-icons',
+							'aria-hidden': 'true',
+							'data-toggle': 'tooltip',
+							'data-placement': 'top',
+							title: 'Notes', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 53
+							}
+						}),
+						_react2.default.createElement(
+							'span',
+							{ className: 'yourCollection-subtitles', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 61
+								}
+							},
+							'Notes'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-sm-6 no_padding yourCollection_data', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 63
+							}
+						},
+						_react2.default.createElement('i', {
+							className: 'ico-icon27  yourCollection-icons',
+							'aria-hidden': 'true',
+							'data-toggle': 'tooltip',
+							'data-placement': 'top',
+							title: 'Highlighs', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 64
+							}
+						}),
+						_react2.default.createElement(
+							'span',
+							{ className: 'yourCollection-subtitles', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 72
+								}
+							},
+							'Highlighs'
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return YourCollection;
+}(_react.Component);
+
+var _default = YourCollection;
+exports.default = _default;
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(YourCollection, 'YourCollection', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/YourCollection.js');
+
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/YourCollection.js');
+}();
+
+;

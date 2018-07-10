@@ -1,0 +1,36 @@
+SyntaxError: Expected corresponding JSX closing tag for <link> (70:10)
+
+[0m [90m 68 | [39m            [33m<[39m[33mlink[39m href[33m=[39m[32m"https://fonts.googleapis.com/css?family=Oxygen:300,400,700"[39m rel[33m=[39m[32m"stylesheet"[39m[33m>[39m
+ [90m 69 | [39m            [33m<[39m[33mtitle[39m[33m>[39m{config([32m'htmlPage.defaultTitle'[39m)} [33m<[39m[33m/[39m[33mtitle[39m[33m>[39m
+[31m[1m>[22m[39m[90m 70 | [39m          [33m<[39m[33m/[39m[33mHelmet[39m[33m>[39m
+ [90m    | [39m          [31m[1m^[22m[39m
+ [90m 71 | [39m        [33m<[39m[33mHeader[39m layout3[33m=[39m{[36mthis[39m[33m.[39mtoggleLayout3[33m.[39mbind([36mthis[39m)} layout4 [33m=[39m {[36mthis[39m[33m.[39mtoggleLayout4[33m.[39mbind([36mthis[39m)} likesort[33m=[39m{[36mthis[39m[33m.[39mtoggleLikeSort[33m.[39mbind([36mthis[39m)} trendsort[33m=[39m{[36mthis[39m[33m.[39mtoggleTrendSort[33m.[39mbind([36mthis[39m)} [33m/[39m[33m>[39m
+ [90m 72 | [39m        [33m<[39m[33mdiv[39m className[33m=[39m[32m"container-fluid content no_padding"[39m[33m>[39m
+ [90m 73 | [39m          [33m<[39m[33mdiv[39m className[33m=[39m[32m"col-sm-2 no_padding"[39m[33m>[39m[0m
+
+BabelLoaderError: SyntaxError: Expected corresponding JSX closing tag for <link> (70:10)
+
+[0m [90m 68 | [39m            [33m<[39m[33mlink[39m href[33m=[39m[32m"https://fonts.googleapis.com/css?family=Oxygen:300,400,700"[39m rel[33m=[39m[32m"stylesheet"[39m[33m>[39m
+ [90m 69 | [39m            [33m<[39m[33mtitle[39m[33m>[39m{config([32m'htmlPage.defaultTitle'[39m)} [33m<[39m[33m/[39m[33mtitle[39m[33m>[39m
+[31m[1m>[22m[39m[90m 70 | [39m          [33m<[39m[33m/[39m[33mHelmet[39m[33m>[39m
+ [90m    | [39m          [31m[1m^[22m[39m
+ [90m 71 | [39m        [33m<[39m[33mHeader[39m layout3[33m=[39m{[36mthis[39m[33m.[39mtoggleLayout3[33m.[39mbind([36mthis[39m)} layout4 [33m=[39m {[36mthis[39m[33m.[39mtoggleLayout4[33m.[39mbind([36mthis[39m)} likesort[33m=[39m{[36mthis[39m[33m.[39mtoggleLikeSort[33m.[39mbind([36mthis[39m)} trendsort[33m=[39m{[36mthis[39m[33m.[39mtoggleTrendSort[33m.[39mbind([36mthis[39m)} [33m/[39m[33m>[39m
+ [90m 72 | [39m        [33m<[39m[33mdiv[39m className[33m=[39m[32m"container-fluid content no_padding"[39m[33m>[39m
+ [90m 73 | [39m          [33m<[39m[33mdiv[39m className[33m=[39m[32m"col-sm-2 no_padding"[39m[33m>[39m[0m
+
+    at transpile (/home/spineor/risorso/node_modules/babel-loader/lib/index.js:64:13)
+    at Object.module.exports (/home/spineor/risorso/node_modules/babel-loader/lib/index.js:174:20)
+    at applySyncOrAsync (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:341:21)
+    at apply (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:268:5)
+    at /home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:131:7
+    at applyPitchLoader (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:184:14)
+    at applyPitchLoader (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:192:14)
+    at applyPitchLoaders (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:222:4)
+    at applyLoaders (/home/spineor/risorso/node_modules/happypack/lib/applyLoaders.js:116:3)
+    at HappyWorker.compile (/home/spineor/risorso/node_modules/happypack/lib/HappyWorker.js:32:3)
+    at Object.compile (/home/spineor/risorso/node_modules/happypack/lib/HappyForegroundThreadPool.js:61:14)
+    at HappyPlugin.compileAndUpdateCache (/home/spineor/risorso/node_modules/happypack/lib/HappyPlugin.js:344:14)
+    at HappyPlugin.compileInForeground (/home/spineor/risorso/node_modules/happypack/lib/HappyPlugin.js:321:25)
+    at HappyPlugin.compile (/home/spineor/risorso/node_modules/happypack/lib/HappyPlugin.js:237:32)
+    at Object.HappyLoader (/home/spineor/risorso/node_modules/happypack/lib/HappyLoader.js:42:15)
+    at LOADER_EXECUTION (/home/spineor/risorso/node_modules/loader-runner/lib/LoaderRunner.js:119:14)

@@ -1,0 +1,235 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Spacetab.js';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _Login = require('./Login');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+var _universalCookie = require('universal-cookie');
+
+var _universalCookie2 = _interopRequireDefault(_universalCookie);
+
+var _userProfile_action = require('../actions/userProfile_action');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class Spacetab extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      logButton: 'login'
+    };
+  }
+  componentWillMount() {
+    const cookies = new _universalCookie2.default();
+    const space = cookies.get('risorsoLoggedIn');
+    if (space) {
+      // this.props.fetchData(space);
+      this.setState({
+        logButton: 'logout'
+      });
+    } else {
+      // console.log(err);
+    }
+  }
+  handleAuth() {
+    fetch('http://192.168.20.127:4000/api/connect/facebook', {
+      method: 'get'
+    }).then(res => {
+      if (res) {
+        window.open(res.url);
+
+        // return dispatch(handleAboutUs(res));
+      }
+      // return dispatch(handleFormError(res));
+    });
+    // .catch(err => dispatch(handleFormError(err)));
+  }
+  render() {
+    if (this.props.spaceTabData.fetchUserProfile.response) {
+      if (this.props.spaceTabData.fetchUserProfile.response.length > 0) {}
+    }
+
+    return _react2.default.createElement(
+      'div',
+      { className: 'sidebar3', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 48
+        }
+      },
+      _react2.default.createElement(
+        'div',
+        { className: 'row no_margin', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 49
+          }
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-12 no_padding', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 50
+            }
+          },
+          _react2.default.createElement(
+            'div',
+            { className: 'row no_margin space', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 51
+              }
+            },
+            _react2.default.createElement(
+              'div',
+              { className: 'col-sm-3 col-lg-3 col-md-3 space_pic', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 52
+                }
+              },
+              _react2.default.createElement(
+                'div',
+                {
+                  className: 'space_profile space_tabs',
+                  'data-toggle': 'tooltip',
+                  'data-placement': 'top',
+                  title: 'Profile Image',
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 53
+                  }
+                },
+                _react2.default.createElement(
+                  _reactRouterDom.NavLink,
+                  { to: '/userprofile', __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 59
+                    }
+                  },
+                  _react2.default.createElement('img', { src: '../assets/images/user_ico.png', className: 'space_image', __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 60
+                    }
+                  })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              {
+                className: 'col-sm-3 col-lg-3 col-md-3 space_messages space_tabs',
+                'data-toggle': 'tooltip',
+                'data-placement': 'top',
+                title: 'Messages',
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 64
+                }
+              },
+              _react2.default.createElement('img', {
+                src: '../assets/images/sidebar_icons/message-icon.png',
+                className: 'space_image',
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 70
+                }
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              {
+                className: 'col-sm-3 col-lg-3 col-md-3 space_edit space_tabs',
+                'data-toggle': 'tooltip',
+                'data-placement': 'top',
+                title: 'Create',
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 75
+                }
+              },
+              _react2.default.createElement('img', {
+                src: '../assets/images/sidebar_icons/edit-icon.png',
+                className: 'space_image',
+                onClick: this.handleAuth.bind(this),
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 81
+                }
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              {
+                className: 'col-sm-3 col-lg-3 col-md-3 space_log space_tabs',
+                'data-toggle': 'tooltip',
+                'data-placement': 'top',
+                title: 'Login',
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 87
+                }
+              },
+              _react2.default.createElement(
+                _reactRouterDom.NavLink,
+                { to: '/login', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 93
+                  }
+                },
+                _react2.default.createElement('img', { src: '../assets/images/sidebar_icons/log-out.png', className: 'space_image', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 94
+                  }
+                })
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  const spaceTabData = state;
+  return { spaceTabData };
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    // fetchData: (spaceTabData) => {
+    //   dispatch(getData(spaceTabData));
+    // },
+  };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Spacetab);

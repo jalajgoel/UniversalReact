@@ -1,0 +1,32 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.quickCategories_Success = quickCategories_Success;
+exports.getQuickCategories_Data = getQuickCategories_Data;
+const QUICK = exports.QUICK = 'QUICK';
+
+function quickCategories_Success(res) {
+	return {
+		type: QUICK,
+		payload: res
+	};
+}
+
+function getQuickCategories_Data() {
+
+	return (dispatch, state) => {
+
+		return fetch('http://192.168.20.168:4000/api/categories', {
+			method: "get"
+		}).then(res => res.json()).then(res => {
+			if (typeof res === 'object') {
+				var quickData = res.categories;
+				return dispatch(quickCategories_Success(quickData));
+			} else {
+				return dispatch(contentCardError(res));
+			}
+		}).catch(error => dispatch(contentCardError(error)));
+	};
+}

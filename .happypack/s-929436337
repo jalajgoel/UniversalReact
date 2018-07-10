@@ -1,0 +1,157 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _Switch = require('react-router-dom/Switch');
+
+var _Switch2 = _interopRequireDefault(_Switch);
+
+var _Route = require('react-router-dom/Route');
+
+var _Route2 = _interopRequireDefault(_Route);
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _ContentCard = require('./ContentCard');
+
+var _ContentCard2 = _interopRequireDefault(_ContentCard);
+
+var _Header = require('./Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Sidebar = require('./Sidebar');
+
+var _Sidebar2 = _interopRequireDefault(_Sidebar);
+
+var _Login = require('./Login');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+var _config = require('../../config');
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class App extends _react.Component {
+  constructor() {
+    super();
+    this.state = {
+      showLayoutOf4: false,
+      showLayoutOf3: false,
+      likeSort: false,
+      trendSort: false
+    };
+  }
+
+  // layout selectors
+  toggleLayout3() {
+    this.setState({
+      showLayoutOf3: true,
+      showLayoutOf4: false
+    });
+  }
+  toggleLayout4() {
+    this.setState({
+      showLayoutOf3: false,
+      showLayoutOf4: true
+    });
+  }
+
+  // content sorting options
+  toggleLikeSort() {
+    this.setState({ likeSort: !this.state.likeSort });
+  }
+
+  toggleTrendSort() {
+    this.setState({ trendSort: !this.state.trendSort });
+  }
+
+  render() {
+
+    return _jsx('div', {
+      id: 'row'
+    }, void 0, _jsx(_reactHelmet2.default, {}, void 0, _jsx('html', {
+      lang: 'en'
+    }), _jsx('meta', {
+      charSet: 'utf-8'
+    }), _jsx('meta', {
+      name: 'application-name',
+      content: (0, _config2.default)('htmlPage.defaultTitle')
+    }), _jsx('meta', {
+      name: 'description',
+      content: (0, _config2.default)('htmlPage.description')
+    }), _jsx('meta', {
+      httpEquiv: 'X-UA-Compatible',
+      content: 'IE=edge'
+    }), _jsx('meta', {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1'
+    }), _jsx('meta', {
+      name: 'msapplication-TileColor',
+      content: '#2b2b2b'
+    }), _jsx('meta', {
+      name: 'msapplication-TileImage',
+      content: '/favicons/mstile-144x144.png'
+    }), _jsx('meta', {
+      name: 'theme-color',
+      content: '#2b2b2b'
+    }), _jsx('link', {
+      href: '../assets/css/bootstrap.min.css',
+      rel: 'stylesheet'
+    }), _jsx('link', {
+      href: '../assets/css/main.css',
+      rel: 'stylesheet'
+    }), _jsx('link', {
+      href: '../assets/font-awesome/css/font-awesome.min.css',
+      rel: 'stylesheet'
+    }), _jsx('link', {
+      href: 'https://fonts.googleapis.com/css?family=Oxygen:300,400,700',
+      rel: 'stylesheet'
+    }), _jsx('title', {}, void 0, (0, _config2.default)('htmlPage.defaultTitle'), ' '), _jsx('script', {
+      src: '/assets/js/bootstrap.min.js'
+    })), _jsx(_Header2.default, {
+      layout3: this.toggleLayout3.bind(this),
+      layout4: this.toggleLayout4.bind(this),
+      likesort: this.toggleLikeSort.bind(this),
+      trendsort: this.toggleTrendSort.bind(this)
+    }), _jsx('div', {
+      className: 'container-fluid content no_padding'
+    }, void 0, _jsx('div', {
+      className: 'col-sm-2 no_padding'
+    }, void 0, _jsx(_Sidebar2.default, {})), _jsx('div', {
+      className: 'col-xs-10 no_padding'
+    }, void 0, _jsx('div', {
+      className: 'row no_margin'
+    }, void 0, _jsx(_Switch2.default, {}, void 0, _jsx(_Route2.default, {
+      exact: true,
+      path: '/',
+      render: props => _jsx(_ContentCard2.default, {
+        component: _ContentCard2.default,
+        layout3: this.state.showLayoutOf3,
+        layout4: this.state.showLayoutOf4,
+        like: this.state.likeSort,
+        trend: this.state.trendSort
+      })
+    }))))));
+  }
+}
+
+function mapStateToProps(state) {
+  return {};
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);

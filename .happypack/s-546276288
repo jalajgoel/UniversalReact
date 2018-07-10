@@ -1,0 +1,184 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var _jsxFileName = '/home/spineor/risorso/shared/components/Login.js';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class Login extends _react.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			email: '',
+			password: ''
+
+		};
+	}
+
+	handleLoginInput(e) {
+		var name = e.target.name,
+		    value = e.target.value;
+		this.setState({ [name]: value });
+	}
+
+	login(e) {
+		e.preventDefault();
+		var logindata1 = this.state;
+		console.log(logindata1);
+
+		fetch('http://192.168.20.168:4000/api/login', {
+			mode: 'cors',
+			method: "POST",
+			headers: { 'Accept': 'application/json , text/plain, */*',
+				'Content-type': 'application/json' },
+			body: JSON.stringify(logindata1)
+		}).then(res => res.json()).then(res => {
+			if (typeof res === "object") {
+				console.log("response", res);
+			}
+		}).catch(err => console.log(err));
+	}
+
+	render() {
+		return _react2.default.createElement(
+			'div',
+			{ className: 'login_section', __self: this,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 45
+				}
+			},
+			_react2.default.createElement(
+				'div',
+				{ className: 'login_img', __self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 46
+					}
+				},
+				_react2.default.createElement(
+					'span',
+					{ className: 'login_text', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 47
+						}
+					},
+					'Log In'
+				),
+				_react2.default.createElement('img', { src: '../assets/images/login/login.png', alt: 'login_img', __self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 48
+					}
+				})
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'login_input', __self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 50
+					}
+				},
+				_react2.default.createElement(
+					'form',
+					{ onSubmit: this.login.bind(this), __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 51
+						}
+					},
+					_react2.default.createElement(
+						'div',
+						{ className: 'form-group', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 52
+							}
+						},
+						_react2.default.createElement('input', { type: 'email', name: 'email', className: 'user_inputs_login form-control', placeholder: 'Email', value: this.state.email, onChange: this.handleLoginInput.bind(this), __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 53
+							}
+						})
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'form-group', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 55
+							}
+						},
+						_react2.default.createElement('input', { type: 'password', name: 'password', className: 'user_inputs_login form-control', placeholder: 'Password', value: this.state.password, onChange: this.handleLoginInput.bind(this), __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 56
+							}
+						})
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'form-group', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 58
+							}
+						},
+						_react2.default.createElement(
+							'span',
+							{
+								__self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 59
+								}
+							},
+							_react2.default.createElement(
+								'a',
+								{
+									__self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 59
+									}
+								},
+								'Forgot password?'
+							)
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'form-group text-right', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 62
+							}
+						},
+						_react2.default.createElement('input', { type: 'submit', name: 'Login', value: 'Log In', className: 'submit_button', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 63
+							}
+						})
+					)
+				)
+			)
+		);
+	}
+}
+exports.default = Login;

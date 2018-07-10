@@ -1,0 +1,43 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = fetchUserProfile;
+
+var _userProfile_action = require('../actions/userProfile_action');
+
+var initialState = {
+  response: ''
+};
+
+function fetchUserProfile() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'ABOUTUS':
+      return { response: action.payload };
+      break;
+
+    case 'ERROR':
+      return { response: action.message };
+      break;
+
+    default:
+      return state;
+  }
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(initialState, 'initialState', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/reducers/userprofile_reducer.js');
+
+  __REACT_HOT_LOADER__.register(fetchUserProfile, 'fetchUserProfile', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/reducers/userprofile_reducer.js');
+}();
+
+;

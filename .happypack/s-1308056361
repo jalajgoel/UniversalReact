@@ -1,0 +1,46 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = fetchSignUp;
+
+var _signup_action = require('../actions/signup_action');
+
+var initialState = {
+  response: ''
+};
+
+// receiving action response
+
+function fetchSignUp() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'SIGNUP':
+      return {
+        response: action.payload
+      };
+      break;
+    case 'ERROR':
+      return {
+        response: action.payload
+      };
+    default:
+      return state;
+  }
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(initialState, 'initialState', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/reducers/signup_reducer.js');
+
+  __REACT_HOT_LOADER__.register(fetchSignUp, 'fetchSignUp', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/reducers/signup_reducer.js');
+}();
+
+;

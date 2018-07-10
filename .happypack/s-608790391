@@ -1,0 +1,41 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.CONTENT = undefined;
+exports.contentCardSuccess = contentCardSuccess;
+exports.contentCardError = contentCardError;
+exports.getContentCard = getContentCard;
+
+require("fetch-everywhere");
+
+const CONTENT = exports.CONTENT = "CONTENT";
+
+function contentCardSuccess(res) {
+	return {
+		type: CONTENT,
+		payload: res
+	};
+}
+function contentCardError(err) {
+	return {
+		type: ERROR,
+		message: err
+	};
+}
+function getContentCard() {
+	return (dispatch, state) => {
+
+		return fetch('http://192.168.20.168:4000/api/content_list/latest/' + 1, {
+			method: "get"
+		}).then(res => res.json()).then(res => {
+			if (typeof res === 'object') {
+				var content = res.content;
+				return dispatch(contentCardSuccess(content));
+			} else {
+				return dispatch(contentCardError(res));
+			}
+		}).catch(error => dispatch(contentCardError(error)));
+	};
+}

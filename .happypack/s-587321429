@@ -1,0 +1,128 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ERROR = exports.FORGETPASSWORD = exports.LOGIN = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.handleLogin = handleLogin;
+exports.handleLoginError = handleLoginError;
+exports.fetchLogin = fetchLogin;
+exports.handleForgetPassword = handleForgetPassword;
+exports.fetchForgetPassword = fetchForgetPassword;
+
+var _variables = require('../../variables');
+
+var _variables2 = _interopRequireDefault(_variables);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var LOGIN = exports.LOGIN = 'LOGIN';
+var FORGETPASSWORD = exports.FORGETPASSWORD = 'FORGETPASSWORD';
+var ERROR = exports.ERROR = 'ERROR';
+
+
+// sending received response from backend to reducer function
+function handleLogin(res) {
+  return {
+    type: LOGIN,
+    payload: res
+  };
+}
+
+// to handle error recieved
+function handleLoginError(err) {
+  return {
+    type: ERROR,
+    message: err
+  };
+}
+
+// sending post request to backend for login request
+function fetchLogin(email, password) {
+  var res = {
+    email: email,
+    password: password
+  };
+  var url = _variables2.default.url.liveURL + '/api/login';
+  return function (dispatch, state) {
+    return fetch(url, {
+      method: 'post',
+      headers: {
+        Accept: 'application/json , text/plain, */*',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(res)
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+        return dispatch(handleLogin(res));
+      }
+      return dispatch(handleLoginError(res));
+    }).catch(function (err) {
+      return dispatch(handleLoginError(res));
+    });
+  };
+}
+
+// sending forgetpassword data to reducer
+function handleForgetPassword(res) {
+  return {
+    type: FORGETPASSWORD,
+    payload: res
+  };
+}
+
+// sending post request to handle forget password request
+function fetchForgetPassword(email) {
+  var res = {
+    email: email
+  };
+  return function (dispatch, state) {
+    return fetch(_variables2.default.url.liveURL + '/api/forgot_password', {
+      method: 'post',
+      headers: {
+        Accept: 'application/json , text/plain, */*',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(res)
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+        return dispatch(handleForgetPassword(res));
+      }
+      return dispatch(handleLoginError(res));
+    }).catch(function (err) {
+      return dispatch(handleLoginError(res));
+    });
+  };
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(LOGIN, 'LOGIN', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/login_action.js');
+
+  __REACT_HOT_LOADER__.register(FORGETPASSWORD, 'FORGETPASSWORD', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/login_action.js');
+
+  __REACT_HOT_LOADER__.register(ERROR, 'ERROR', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/login_action.js');
+
+  __REACT_HOT_LOADER__.register(handleLogin, 'handleLogin', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/login_action.js');
+
+  __REACT_HOT_LOADER__.register(handleLoginError, 'handleLoginError', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/login_action.js');
+
+  __REACT_HOT_LOADER__.register(fetchLogin, 'fetchLogin', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/login_action.js');
+
+  __REACT_HOT_LOADER__.register(handleForgetPassword, 'handleForgetPassword', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/login_action.js');
+
+  __REACT_HOT_LOADER__.register(fetchForgetPassword, 'fetchForgetPassword', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/login_action.js');
+}();
+
+;

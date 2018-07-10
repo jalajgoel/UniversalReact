@@ -1,0 +1,250 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var _jsxFileName = '/home/spineor/risorso/shared/components/Login.js';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Login = function (_Component) {
+	_inherits(Login, _Component);
+
+	function Login(props) {
+		_classCallCheck(this, Login);
+
+		var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+		_this.state = {
+			email: '',
+			password: '',
+			showForgetPassword: false
+
+		};
+		return _this;
+	}
+
+	_createClass(Login, [{
+		key: 'handleLoginInput',
+		value: function handleLoginInput(e) {
+			var name = e.target.name,
+			    value = e.target.value;
+			this.setState(_defineProperty({}, name, value));
+		}
+	}, {
+		key: 'login',
+		value: function login(e) {
+			e.preventDefault();
+			var logindata1 = this.state;
+			console.log(logindata1);
+
+			fetch('http://192.168.20.168:4000/api/login', {
+				mode: 'cors',
+				method: "POST",
+				headers: { 'Accept': 'application/json , text/plain, */*',
+					'Content-type': 'application/json' },
+				body: JSON.stringify(logindata1)
+			}).then(function (res) {
+				return res.json();
+			}).then(function (res) {
+				if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === "object") {
+					console.log("response", res);
+				}
+			}).catch(function (err) {
+				return console.log(err);
+			});
+		}
+	}, {
+		key: 'forgetPassword',
+		value: function forgetPassword() {
+			this.setState({ showForgetPassword: true });
+			console.log("forget clicked");
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var s = void 0;
+			if (showForgetPassword) {
+				s = _react2.default.createElement(
+					'div',
+					{
+						__self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 54
+						}
+					},
+					'remember me!'
+				);
+			}
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'login_section', __self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 59
+					}
+				},
+				_react2.default.createElement(
+					'div',
+					{ className: 'login_img', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 60
+						}
+					},
+					_react2.default.createElement(
+						'span',
+						{ className: 'login_text', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 61
+							}
+						},
+						'Log In'
+					),
+					_react2.default.createElement('img', { src: '../assets/images/login/login.png', alt: 'login_img', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 62
+						}
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'login_input', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 64
+						}
+					},
+					_react2.default.createElement(
+						'form',
+						{ onSubmit: this.login.bind(this), __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 65
+							}
+						},
+						_react2.default.createElement(
+							'div',
+							{ className: 'form-group', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 66
+								}
+							},
+							_react2.default.createElement('input', { type: 'email', name: 'email', className: 'user_inputs_login form-control', placeholder: 'Email', value: this.state.email, onChange: this.handleLoginInput.bind(this), __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 67
+								}
+							})
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'form-group', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 69
+								}
+							},
+							_react2.default.createElement('input', { type: 'password', name: 'password', className: 'user_inputs_login form-control', placeholder: 'Password', value: this.state.password, onChange: this.handleLoginInput.bind(this), __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 70
+								}
+							})
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'form-group', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 72
+								}
+							},
+							_react2.default.createElement(
+								'span',
+								{
+									__self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 73
+									}
+								},
+								_react2.default.createElement(
+									'a',
+									{ onClick: this.forgetPassword.bind(this), __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 73
+										}
+									},
+									'Forgot password?'
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'form-group text-right', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 76
+								}
+							},
+							_react2.default.createElement('input', { type: 'submit', name: 'Login', value: 'Log In', className: 'submit_button', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 77
+								}
+							})
+						)
+					)
+				),
+				s
+			);
+		}
+	}]);
+
+	return Login;
+}(_react.Component);
+
+var _default = Login;
+exports.default = _default;
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(Login, 'Login', '/home/spineor/risorso/shared/components/Login.js');
+
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/risorso/shared/components/Login.js');
+}();
+
+;

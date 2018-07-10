@@ -1,0 +1,88 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ERROR = exports.FORGETPASSWORD = exports.LOGIN = undefined;
+exports.handleLogin = handleLogin;
+exports.handleLoginError = handleLoginError;
+exports.fetchLogin = fetchLogin;
+exports.handleForgetPassword = handleForgetPassword;
+exports.fetchForgetPassword = fetchForgetPassword;
+
+var _variables = require('../../variables');
+
+var _variables2 = _interopRequireDefault(_variables);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const LOGIN = exports.LOGIN = 'LOGIN';
+const FORGETPASSWORD = exports.FORGETPASSWORD = 'FORGETPASSWORD';
+const ERROR = exports.ERROR = 'ERROR';
+
+
+// sending received response from backend to reducer function
+function handleLogin(res) {
+  return {
+    type: LOGIN,
+    payload: res
+  };
+}
+
+// to handle error recieved
+function handleLoginError(err) {
+  return {
+    type: ERROR,
+    message: err
+  };
+}
+
+// sending post request to backend for login request
+function fetchLogin(email, password) {
+  const res = {
+    email,
+    password
+  };
+  const url = `${_variables2.default.url.liveURL}/api/login`;
+  return (dispatch, state) => fetch(url, {
+    method: 'post',
+    headers: {
+      Accept: 'application/json , text/plain, */*',
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(res)
+  }).then(res => res.json()).then(res => {
+    if (typeof res === 'object') {
+      return dispatch(handleLogin(res));
+    }
+    return dispatch(handleLoginError(res));
+  }).catch(err => dispatch(handleLoginError(res)));
+}
+
+// sending forgetpassword data to reducer
+function handleForgetPassword(res) {
+  return {
+    type: FORGETPASSWORD,
+    payload: res
+  };
+}
+
+// sending post request to handle forget password request
+function fetchForgetPassword(email) {
+  const res = {
+    email
+  };
+  return (dispatch, state) => fetch(`${_variables2.default.url.liveURL}/api/forgot_password`, {
+    method: 'post',
+    headers: {
+      Accept: 'application/json , text/plain, */*',
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(res)
+  }).then(res => res.json()).then(res => {
+    if (typeof res === 'object') {
+      return dispatch(handleForgetPassword(res));
+    }
+    return dispatch(handleLoginError(res));
+  }).catch(err => dispatch(handleLoginError(res)));
+}

@@ -1,0 +1,128 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var _jsxFileName = '/home/spineor/risorso/shared/components/ParentLogin.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _Login = require('./Login');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+var _SignUp = require('./SignUp');
+
+var _SignUp2 = _interopRequireDefault(_SignUp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Parentlogin = function (_Component) {
+	_inherits(Parentlogin, _Component);
+
+	function Parentlogin(props) {
+		_classCallCheck(this, Parentlogin);
+
+		var _this = _possibleConstructorReturn(this, (Parentlogin.__proto__ || Object.getPrototypeOf(Parentlogin)).call(this, props));
+
+		_this.state = {
+			check: ""
+		};
+		return _this;
+	}
+
+	_createClass(Parentlogin, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'row', __self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 16
+					}
+				},
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-sm-6 login_col no_padding', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 17
+						}
+					},
+					_react2.default.createElement(_Login2.default, {
+						__self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 18
+						}
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-sm-6 no_padding', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 20
+						}
+					},
+					_react2.default.createElement(_SignUp2.default, {
+						__self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 21
+						}
+					})
+				)
+			);
+		}
+	}]);
+
+	return Parentlogin;
+}(_react.Component);
+
+function mapStateToProps(state) {
+	var check = state;
+	return { check: check };
+}
+
+function mapDispatchToProps(dispatch) {
+	return { dispatch: dispatch };
+}
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Parentlogin);
+
+exports.default = _default;
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(Parentlogin, 'Parentlogin', '/home/spineor/risorso/shared/components/ParentLogin.js');
+
+	__REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/home/spineor/risorso/shared/components/ParentLogin.js');
+
+	__REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/home/spineor/risorso/shared/components/ParentLogin.js');
+
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/risorso/shared/components/ParentLogin.js');
+}();
+
+;

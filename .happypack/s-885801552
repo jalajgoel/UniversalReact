@@ -1,0 +1,190 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var _jsxFileName = '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/Spacetab.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _reactRouter = require('react-router');
+
+var _Login = require('./Login');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Spacetab = function (_Component) {
+	_inherits(Spacetab, _Component);
+
+	function Spacetab(props) {
+		_classCallCheck(this, Spacetab);
+
+		return _possibleConstructorReturn(this, (Spacetab.__proto__ || Object.getPrototypeOf(Spacetab)).call(this, props));
+	}
+
+	_createClass(Spacetab, [{
+		key: 'render',
+		value: function render() {
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'sidebar3', __self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 16
+					}
+				},
+				_react2.default.createElement(
+					'div',
+					{ className: 'row no_margin', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 17
+						}
+					},
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-sm-12 no_padding', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 18
+							}
+						},
+						_react2.default.createElement(
+							'div',
+							{ className: 'row no_margin space', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 19
+								}
+							},
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-sm-3 col-lg-3 col-md-3 space_pic', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 20
+									}
+								},
+								_react2.default.createElement(
+									'div',
+									{ className: 'space_profile space_tabs', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 21
+										}
+									},
+									_react2.default.createElement('img', { src: '../assets/images/user_ico.png', className: 'space_image', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 22
+										}
+									})
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-sm-3 col-lg-3 col-md-3 space_messages', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 25
+									}
+								},
+								_react2.default.createElement(
+									'span',
+									{ className: 'space_tabs', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 26
+										}
+									},
+									_react2.default.createElement('i', { className: 'fa fa-envelope-o', 'aria-hidden': 'true', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 26
+										}
+									})
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-sm-3 col-lg-3 col-md-3 space_edit', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 28
+									}
+								},
+								_react2.default.createElement('span', { className: 'space_tabs', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 29
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-sm-3 col-lg-3 col-md-3 space_log', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 31
+									}
+								},
+								_react2.default.createElement(
+									'span',
+									{ className: 'space_tabs', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 33
+										}
+									},
+									_react2.default.createElement('i', { className: 'ico-icon26', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 33
+										}
+									})
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Spacetab;
+}(_react.Component);
+
+var _default = Spacetab;
+exports.default = _default;
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(Spacetab, 'Spacetab', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/Spacetab.js');
+
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/Spacetab.js');
+}();
+
+;

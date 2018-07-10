@@ -1,0 +1,279 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var _jsxFileName = '/home/spineor/risorso/shared/components/QuickCategories.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _YourCollection = require('./YourCollection');
+
+var _YourCollection2 = _interopRequireDefault(_YourCollection);
+
+var _quickCategories_action = require('../actions/quickCategories_action');
+
+var _TrendingTopics = require('./TrendingTopics');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var QuickCategories = function (_Component) {
+	_inherits(QuickCategories, _Component);
+
+	function QuickCategories(props) {
+		_classCallCheck(this, QuickCategories);
+
+		var _this = _possibleConstructorReturn(this, (QuickCategories.__proto__ || Object.getPrototypeOf(QuickCategories)).call(this, props));
+
+		_this.state = {
+			//to activate css of icon on click iff category has data to show
+			isActive: "",
+
+			//to render YourCollection component--by default quick categories will render
+			showYourCollection: false
+
+		};
+		_this.changeClassHandle = _this.changeClassHandle.bind(_this);
+		return _this;
+	}
+
+	_createClass(QuickCategories, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.props.getCategories();
+		}
+	}, {
+		key: 'changeClassHandle',
+		value: function changeClassHandle(data) {
+			this.setState({ isActive: data });
+		}
+
+		// handler for toggleSidebar event
+
+	}, {
+		key: 'toggleSidebar',
+		value: function toggleSidebar() {
+			this.setState({ showYourCollection: !this.state.showYourCollection });
+		}
+
+		// quick categories default data
+
+	}, {
+		key: 'quickCategories',
+		value: function quickCategories() {
+
+			if (this.props.categories.viewquickCategories_Data.result) {
+				if (this.props.categories.viewquickCategories_Data.result.length > 0) {
+					var my = this;
+					var CategoriesMaping = this.props.categories.viewquickCategories_Data.result.map(function (data) {
+						return _react2.default.createElement(
+							'div',
+							{ key: data.id, className: my.state.isActive == data ? "quick_categories_item border_right hover" : "quick_categories_item border_right", __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 43
+								}
+							},
+							_react2.default.createElement(
+								'a',
+								{ href: '#', onClick: function onClick() {
+										my.changeClassHandle(data);
+									}, __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 44
+									}
+								},
+								_react2.default.createElement(
+									'div',
+									{ className: 'img', 'data-toggle': 'tooltip', 'data-placement': 'top', title: data.category, __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 45
+										}
+									},
+									_react2.default.createElement('img', { src: data.category_icon, __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 46
+										}
+									})
+								),
+								_react2.default.createElement(
+									'p',
+									{
+										__self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 48
+										}
+									},
+									data.title
+								)
+							)
+						);
+					});
+				}
+			}
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'sidebar1', __self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 56
+					}
+				},
+				_react2.default.createElement(
+					'div',
+					{ className: 'row no_margin quick-heading', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 57
+						}
+					},
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-sm-8 no_padding padding_left', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 58
+							}
+						},
+						_react2.default.createElement(
+							'p',
+							{ className: 'text no_padding', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 59
+								}
+							},
+							'Quick Categories'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-sm-4 quick-icon', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 61
+							}
+						},
+						_react2.default.createElement(
+							'div',
+							{ className: 'reset', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Turn Button', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 62
+								}
+							},
+							_react2.default.createElement('img', { src: '../assets/images/sidebar_icons/reset.png', onClick: this.toggleSidebar.bind(this), __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 63
+								}
+							})
+						)
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'row1', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 67
+						}
+					},
+					CategoriesMaping
+				)
+			);
+		}
+
+		// YourCollection sidebar data
+
+	}, {
+		key: 'urCollection',
+		value: function urCollection() {
+			return _react2.default.createElement(_YourCollection2.default, { toggleMe: this.toggleSidebar.bind(this), __self: this,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 77
+				}
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var sidebar1 = void 0;
+			if (this.state.showYourCollection) {
+				sidebar1 = this.urCollection();
+			} else {
+				sidebar1 = this.quickCategories();
+			}
+
+			return _react2.default.createElement(
+				'div',
+				{
+					__self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 91
+					}
+				},
+				sidebar1
+			);
+		}
+	}]);
+
+	return QuickCategories;
+}(_react.Component);
+
+function mapStateToProps(state) {
+	var categories = state;
+	return { categories: categories };
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		getCategories: function getCategories() {
+			dispatch((0, _quickCategories_action.getQuickCategories_Data)());
+		}
+	};
+}
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(QuickCategories);
+
+exports.default = _default;
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(QuickCategories, 'QuickCategories', '/home/spineor/risorso/shared/components/QuickCategories.js');
+
+	__REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/home/spineor/risorso/shared/components/QuickCategories.js');
+
+	__REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/home/spineor/risorso/shared/components/QuickCategories.js');
+
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/risorso/shared/components/QuickCategories.js');
+}();
+
+;

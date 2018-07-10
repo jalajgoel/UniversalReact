@@ -1,0 +1,362 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var _jsxFileName = '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/TrendingTopics.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TrendingTopics = function (_Component) {
+	_inherits(TrendingTopics, _Component);
+
+	function TrendingTopics() {
+		_classCallCheck(this, TrendingTopics);
+
+		return _possibleConstructorReturn(this, (TrendingTopics.__proto__ || Object.getPrototypeOf(TrendingTopics)).apply(this, arguments));
+	}
+
+	_createClass(TrendingTopics, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'sidebar2', __self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 9
+					}
+				},
+				_react2.default.createElement(
+					'div',
+					{ className: 'row no_margin', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 10
+						}
+					},
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-sm-12 no_padding', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 11
+							}
+						},
+						_react2.default.createElement(
+							'div',
+							{ className: 'row trending-heading no_margin', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 12
+								}
+							},
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-sm-12', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 13
+									}
+								},
+								_react2.default.createElement(
+									'p',
+									{ className: 'text trending_text', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 14
+										}
+									},
+									'Trending Topics'
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'sidebar_content1', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 17
+								}
+							},
+							_react2.default.createElement(
+								'div',
+								{ className: 'trending_input', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 18
+									}
+								},
+								_react2.default.createElement(
+									'form',
+									{
+										__self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 19
+										}
+									},
+									_react2.default.createElement(
+										'div',
+										{ className: 'input-group', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 20
+											}
+										},
+										_react2.default.createElement('input', { type: 'text', name: 'trendingSearch', placeholder: 'Search All Topics', className: 'form-control trending_search', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 21
+											}
+										}),
+										_react2.default.createElement(
+											'span',
+											{ className: 'input-group-addon trending_search_icon', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 22
+												}
+											},
+											_react2.default.createElement('i', { className: 'fa fa-search', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Search Trending Topics', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 22
+												}
+											})
+										)
+									)
+								)
+							),
+							_react2.default.createElement(
+								'ul',
+								{ className: 'tending_content no_padding no_margin', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 26
+									}
+								},
+								_react2.default.createElement(
+									'li',
+									{ className: 'trending_data', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 27
+										}
+									},
+									_react2.default.createElement(
+										'p',
+										{
+											__self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 28
+											}
+										},
+										'#livefood'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									{ className: 'trending_data', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 30
+										}
+									},
+									_react2.default.createElement(
+										'p',
+										{
+											__self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 31
+											}
+										},
+										'#food'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									{ className: 'trending_data', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 33
+										}
+									},
+									_react2.default.createElement(
+										'p',
+										{
+											__self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 34
+											}
+										},
+										'#news'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									{ className: 'trending_data', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 36
+										}
+									},
+									_react2.default.createElement(
+										'p',
+										{
+											__self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 37
+											}
+										},
+										'#channelturkey'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									{ className: 'trending_data', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 39
+										}
+									},
+									_react2.default.createElement(
+										'p',
+										{
+											__self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 40
+											}
+										},
+										'#colorfashion'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									{ className: 'trending_data', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 42
+										}
+									},
+									_react2.default.createElement(
+										'p',
+										{
+											__self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 43
+											}
+										},
+										'#livefoood'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									{ className: 'trending_data', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 45
+										}
+									},
+									_react2.default.createElement(
+										'p',
+										{
+											__self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 46
+											}
+										},
+										'#livefoood'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									{ className: 'trending_data', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 48
+										}
+									},
+									_react2.default.createElement(
+										'p',
+										{
+											__self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 49
+											}
+										},
+										'#livefoood'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									{ className: 'trending_data', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 51
+										}
+									},
+									_react2.default.createElement(
+										'p',
+										{
+											__self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 52
+											}
+										},
+										'#livefoood'
+									)
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return TrendingTopics;
+}(_react.Component);
+
+var _default = TrendingTopics;
+exports.default = _default;
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(TrendingTopics, 'TrendingTopics', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/TrendingTopics.js');
+
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/TrendingTopics.js');
+}();
+
+;

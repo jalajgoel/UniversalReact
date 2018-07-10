@@ -1,0 +1,32 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = fetchLogin;
+
+var _login_action = require('../actions/login_action');
+
+const initialState = {
+  response: ''
+};
+
+// receiving response sent by action according to type of action
+function fetchLogin(state = initialState, action) {
+  switch (action.type) {
+    case 'LOGIN':
+      return { response: action.payload };
+      break;
+
+    case 'ERROR':
+      return { response: action.payload };
+      break;
+
+    case 'FORGETPASSWORD':
+      return { response: action.payload };
+      break;
+
+    default:
+      return state;
+  }
+}

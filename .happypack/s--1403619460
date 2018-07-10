@@ -1,0 +1,401 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/DemoApp/index.js';
+
+require('normalize.css/normalize.css');
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Switch = require('react-router-dom/Switch');
+
+var _Switch2 = _interopRequireDefault(_Switch);
+
+var _Route = require('react-router-dom/Route');
+
+var _Route2 = _interopRequireDefault(_Route);
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _config = require('../../../config');
+
+var _config2 = _interopRequireDefault(_config);
+
+require('./globals.css');
+
+var _Error = require('./Error404');
+
+var _Error2 = _interopRequireDefault(_Error);
+
+var _Header = require('./Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _AsyncHomeRoute = require('./AsyncHomeRoute');
+
+var _AsyncHomeRoute2 = _interopRequireDefault(_AsyncHomeRoute);
+
+var _AsyncCounterRoute = require('./AsyncCounterRoute');
+
+var _AsyncCounterRoute2 = _interopRequireDefault(_AsyncCounterRoute);
+
+var _AsyncPostsRoute = require('./AsyncPostsRoute');
+
+var _AsyncPostsRoute2 = _interopRequireDefault(_AsyncPostsRoute);
+
+var _AsyncAboutRoute = require('./AsyncAboutRoute');
+
+var _AsyncAboutRoute2 = _interopRequireDefault(_AsyncAboutRoute);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function DemoApp() {
+  return _react2.default.createElement(
+    'div',
+    { style: { padding: '2rem' }, __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      }
+    },
+    _react2.default.createElement(
+      _reactHelmet2.default,
+      {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        }
+      },
+      _react2.default.createElement('html', { lang: 'en', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24
+        }
+      }),
+      _react2.default.createElement(
+        'title',
+        {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 25
+          }
+        },
+        (0, _config2.default)('htmlPage.defaultTitle')
+      ),
+      _react2.default.createElement('meta', { name: 'application-name', content: (0, _config2.default)('htmlPage.defaultTitle'), __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
+        }
+      }),
+      _react2.default.createElement('meta', { name: 'description', content: (0, _config2.default)('htmlPage.description'), __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        }
+      }),
+      _react2.default.createElement('meta', { charSet: 'utf-8', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30
+        }
+      }),
+      _react2.default.createElement('meta', { httpEquiv: 'X-UA-Compatible', content: 'IE=edge', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31
+        }
+      }),
+      _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 32
+        }
+      }),
+      _react2.default.createElement('meta', { name: 'msapplication-TileColor', content: '#2b2b2b', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33
+        }
+      }),
+      _react2.default.createElement('meta', { name: 'msapplication-TileImage', content: '/favicons/mstile-144x144.png', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        }
+      }),
+      _react2.default.createElement('meta', { name: 'theme-color', content: '#2b2b2b', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        }
+      }),
+      _react2.default.createElement('link', {
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '152x152',
+        href: '/favicons/apple-touch-icon-152x152.png',
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44
+        }
+      }),
+      _react2.default.createElement('link', {
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '144x144',
+        href: '/favicons/apple-touch-icon-144x144.png',
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 49
+        }
+      }),
+      _react2.default.createElement('link', {
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '120x120',
+        href: '/favicons/apple-touch-icon-120x120.png',
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 54
+        }
+      }),
+      _react2.default.createElement('link', {
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '114x114',
+        href: '/favicons/apple-touch-icon-114x114.png',
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 59
+        }
+      }),
+      _react2.default.createElement('link', {
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '76x76',
+        href: '/favicons/apple-touch-icon-76x76.png',
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 64
+        }
+      }),
+      _react2.default.createElement('link', {
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '72x72',
+        href: '/favicons/apple-touch-icon-72x72.png',
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 69
+        }
+      }),
+      _react2.default.createElement('link', {
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '57x57',
+        href: '/favicons/apple-touch-icon-57x57.png',
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 74
+        }
+      }),
+      _react2.default.createElement('link', {
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '60x60',
+        href: '/favicons/apple-touch-icon-60x60.png',
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 79
+        }
+      }),
+      _react2.default.createElement('link', {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/favicons/apple-touch-icon-180x180.png',
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 84
+        }
+      }),
+      _react2.default.createElement('link', { rel: 'mask-icon', href: '/favicons/safari-pinned-tab.svg', color: '#00a9d9', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 89
+        }
+      }),
+      _react2.default.createElement('link', { rel: 'icon', type: 'image/png', href: '/favicons/favicon-196x196.png', sizes: '196x196', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 90
+        }
+      }),
+      _react2.default.createElement('link', { rel: 'icon', type: 'image/png', href: '/favicons/favicon-128.png', sizes: '128x128', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 91
+        }
+      }),
+      _react2.default.createElement('link', { rel: 'icon', type: 'image/png', href: '/favicons/favicon-96x96.png', sizes: '96x96', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 92
+        }
+      }),
+      _react2.default.createElement('link', { rel: 'icon', type: 'image/png', href: '/favicons/favicon-32x32.png', sizes: '32x32', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 93
+        }
+      }),
+      _react2.default.createElement('link', { rel: 'icon', sizes: '16x16 32x32', href: '/favicon.ico', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 94
+        }
+      }),
+      _react2.default.createElement('meta', { name: 'msapplication-TileColor', content: '#2b2b2b', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 95
+        }
+      }),
+      _react2.default.createElement('meta', { name: 'msapplication-TileImage', content: '/favicons/mstile-144x144.png', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 96
+        }
+      }),
+      _react2.default.createElement('meta', { name: 'msapplication-square70x70logo', content: '/favicons/mstile-70x70.png', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 97
+        }
+      }),
+      _react2.default.createElement('meta', { name: 'msapplication-square150x150logo', content: '/favicons/mstile-150x150.png', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 98
+        }
+      }),
+      _react2.default.createElement('meta', { name: 'msapplication-wide310x150logo', content: '/favicons/mstile-310x150.png', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 99
+        }
+      }),
+      _react2.default.createElement('meta', { name: 'msapplication-square310x310logo', content: '/favicons/mstile-310x310.png', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 100
+        }
+      }),
+      _react2.default.createElement('link', { rel: 'manifest', href: '/manifest.json', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 101
+        }
+      }),
+      _react2.default.createElement('link', {
+        rel: 'stylesheet',
+        href: '//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic',
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 108
+        }
+      }),
+      _react2.default.createElement('link', {
+        rel: 'stylesheet',
+        href: '//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css',
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 112
+        }
+      })
+    ),
+    _react2.default.createElement(_Header2.default, {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 117
+      }
+    }),
+    _react2.default.createElement(
+      'div',
+      { style: { paddingTop: '2rem', paddingBottom: '2rem' }, __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 118
+        }
+      },
+      _react2.default.createElement(
+        _Switch2.default,
+        {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 119
+          }
+        },
+        _react2.default.createElement(_Route2.default, { exact: true, path: '/', component: _AsyncHomeRoute2.default, __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 120
+          }
+        }),
+        _react2.default.createElement(_Route2.default, { path: '/counter', component: _AsyncCounterRoute2.default, __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 121
+          }
+        }),
+        _react2.default.createElement(_Route2.default, { path: '/posts', component: _AsyncPostsRoute2.default, __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 122
+          }
+        }),
+        _react2.default.createElement(_Route2.default, { path: '/about', component: _AsyncAboutRoute2.default, __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 123
+          }
+        }),
+        _react2.default.createElement(_Route2.default, { component: _Error2.default, __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 124
+          }
+        })
+      )
+    )
+  );
+}
+
+var _default = DemoApp;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(DemoApp, 'DemoApp', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/DemoApp/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/DemoApp/index.js');
+}();
+
+;

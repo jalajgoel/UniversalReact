@@ -1,0 +1,27 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactAsyncComponent = require('react-async-component');
+
+var _default = (0, _reactAsyncComponent.asyncComponent)({
+  // include home and about route in same chunk e.g main
+  resolve: function resolve() {
+    return System.import( /* webpackChunkName: "main" */'./HomeRoute');
+  }
+});
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/Documents/risorso /newSetup_frontend/react-universally/shared/components/DemoApp/AsyncHomeRoute/index.js');
+}();
+
+;

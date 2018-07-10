@@ -1,0 +1,60 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getAll = getAll;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+// -----------------------------------------------------------------------------
+// PRIVATES
+
+var defaultState = [];
+
+// -----------------------------------------------------------------------------
+// REDUCER
+
+function all() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var action = arguments[1];
+
+  if (action.type === 'FETCHED_POST') {
+    var post = action.payload;
+    return state.find(function (x) {
+      return post.id === x;
+    }) ? state : [].concat(_toConsumableArray(state), [action.payload.id]);
+  }
+
+  return state;
+}
+
+// -----------------------------------------------------------------------------
+// EXPORTED SELECTORS
+
+function getAll(state) {
+  return state;
+}
+
+// -----------------------------------------------------------------------------
+// EXPORTED REDUCER
+
+var _default = all;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(defaultState, 'defaultState', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/reducers/posts/all.js');
+
+  __REACT_HOT_LOADER__.register(all, 'all', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/reducers/posts/all.js');
+
+  __REACT_HOT_LOADER__.register(getAll, 'getAll', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/reducers/posts/all.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/reducers/posts/all.js');
+}();
+
+;

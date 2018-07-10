@@ -1,0 +1,84 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ERROR = exports.SIGNUP = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.handleSignUp = handleSignUp;
+exports.handleSignupError = handleSignupError;
+exports.fetchSignup = fetchSignup;
+
+var _variables = require('../../variables');
+
+var _variables2 = _interopRequireDefault(_variables);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SIGNUP = exports.SIGNUP = 'SIGNUP';
+var ERROR = exports.ERROR = 'ERROR';
+
+// sending received response form fetchSignup to reducer
+function handleSignUp(res) {
+  return {
+    type: SIGNUP,
+    payload: res
+  };
+}
+
+// to handle error
+function handleSignupError(err) {
+  return {
+    type: ERROR,
+    message: err
+  };
+}
+
+// sending post request of signup data i.e. email and password to backend
+function fetchSignup(email, password) {
+  var res = {
+    email: email,
+    password: password
+  };
+  var url = _variables2.default.url.liveURL + '/api/register';
+  return function (dispatch, state) {
+    return fetch(url, {
+      method: 'post',
+      headers: {
+        Accept: 'application/json , text/plain, */*',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(res)
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+        return dispatch(handleSignUp(res));
+      }
+      return dispatch(handleSignupError(res));
+    }).catch(function (err) {
+      return dispatch(handleSignupError(res));
+    });
+  };
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(SIGNUP, 'SIGNUP', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/signup_action.js');
+
+  __REACT_HOT_LOADER__.register(ERROR, 'ERROR', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/signup_action.js');
+
+  __REACT_HOT_LOADER__.register(handleSignUp, 'handleSignUp', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/signup_action.js');
+
+  __REACT_HOT_LOADER__.register(handleSignupError, 'handleSignupError', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/signup_action.js');
+
+  __REACT_HOT_LOADER__.register(fetchSignup, 'fetchSignup', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/signup_action.js');
+}();
+
+;

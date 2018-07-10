@@ -1,0 +1,273 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/App.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _ContentCard = require('./ContentCard');
+
+var _ContentCard2 = _interopRequireDefault(_ContentCard);
+
+var _Header = require('./Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Sidebar = require('./Sidebar');
+
+var _Sidebar2 = _interopRequireDefault(_Sidebar);
+
+var _Login = require('./Login');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+var _config = require('../../config');
+
+var _config2 = _interopRequireDefault(_config);
+
+var _reactRouterDom = require('react-router-dom');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// for rou
+
+
+var App = function (_Component) {
+  _inherits(App, _Component);
+
+  function App() {
+    _classCallCheck(this, App);
+
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+    _this.state = {
+      showLayoutOf4: false,
+      showLayoutOf3: false,
+      likeSort: false,
+      trendSort: false
+    };
+
+    return _this;
+  }
+
+  // layout selectors
+
+
+  _createClass(App, [{
+    key: 'toggleLayout3',
+    value: function toggleLayout3() {
+      this.setState({
+        showLayoutOf3: true,
+        showLayoutOf4: false
+      });
+    }
+  }, {
+    key: 'toggleLayout4',
+    value: function toggleLayout4() {
+      this.setState({
+        showLayoutOf3: false,
+        showLayoutOf4: true
+      });
+    }
+
+    // content sorting options
+
+  }, {
+    key: 'toggleLikeSort',
+    value: function toggleLikeSort() {
+      this.setState({ likeSort: !this.state.likeSort });
+    }
+  }, {
+    key: 'toggleTrendSort',
+    value: function toggleTrendSort() {
+      this.setState({ trendSort: !this.state.trendSort });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        'div',
+        { id: 'row', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 54
+          }
+        },
+        _react2.default.createElement(
+          _reactHelmet2.default,
+          {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 55
+            }
+          },
+          _react2.default.createElement('html', { lang: 'en', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 56
+            }
+          }),
+          _react2.default.createElement('meta', { charSet: 'utf-8', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 57
+            }
+          }),
+          _react2.default.createElement('meta', { name: 'application-name', content: (0, _config2.default)('htmlPage.defaultTitle'), __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 58
+            }
+          }),
+          _react2.default.createElement('meta', { name: 'description', content: (0, _config2.default)('htmlPage.description'), __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 59
+            }
+          }),
+          _react2.default.createElement('meta', { httpEquiv: 'X-UA-Compatible', content: 'IE=edge', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 60
+            }
+          }),
+          _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 61
+            }
+          }),
+          _react2.default.createElement('meta', { name: 'msapplication-TileColor', content: '#2b2b2b', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 62
+            }
+          }),
+          _react2.default.createElement('meta', { name: 'msapplication-TileImage', content: '/favicons/mstile-144x144.png', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 63
+            }
+          }),
+          _react2.default.createElement('meta', { name: 'theme-color', content: '#2b2b2b', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 64
+            }
+          }),
+          _react2.default.createElement(
+            'title',
+            {
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 65
+              }
+            },
+            (0, _config2.default)('htmlPage.defaultTitle')
+          )
+        ),
+        _react2.default.createElement(_Header2.default, { layout3: this.toggleLayout3.bind(this), layout4: this.toggleLayout4.bind(this), likesort: this.toggleLikeSort.bind(this), trendsort: this.toggleTrendSort.bind(this), __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 69
+          }
+        }),
+        _react2.default.createElement(
+          'div',
+          { className: 'container-fluid content no_padding', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 70
+            }
+          },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-2 no_padding', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 71
+              }
+            },
+            _react2.default.createElement(_Sidebar2.default, {
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 72
+              }
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-xs-10 no_padding', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 74
+              }
+            },
+            _react2.default.createElement(
+              'div',
+              { className: 'row no_margin', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 75
+                }
+              },
+              _react2.default.createElement(_ContentCard2.default, { layout3: this.state.showLayoutOf3, layout4: this.state.showLayoutOf4, like: this.state.likeSort, trend: this.state.trendSort, __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 76
+                }
+              })
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(_react.Component);
+
+function mapStateToProps(state) {
+  return {};
+}
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(App);
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(App, 'App', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/App.js');
+
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/App.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/App.js');
+}();
+
+;

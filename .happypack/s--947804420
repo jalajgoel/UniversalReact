@@ -1,0 +1,44 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = viewquickCategories_Data;
+
+var _quickCategories_action = require('../actions/quickCategories_action');
+
+var initialState = {
+  result: []
+};
+
+// receiving action response
+function viewquickCategories_Data() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'QUICK':
+      return {
+        result: action.payload
+      };
+    case 'ERROR':
+      return {
+        result: action.payload
+      };
+    default:
+      return state;
+  }
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(initialState, 'initialState', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/reducers/quickCategories_reducer.js');
+
+  __REACT_HOT_LOADER__.register(viewquickCategories_Data, 'viewquickCategories_Data', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/reducers/quickCategories_reducer.js');
+}();
+
+;

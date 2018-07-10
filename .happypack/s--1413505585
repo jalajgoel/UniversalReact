@@ -1,0 +1,49 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getPostById = getPostById;
+
+var _redux = require('redux');
+
+var _posts = require('./posts');
+
+var FromPosts = _interopRequireWildcard(_posts);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+// -----------------------------------------------------------------------------
+// REDUCER
+
+var rootReducer = (0, _redux.combineReducers)({
+  posts: FromPosts.default
+});
+
+// -----------------------------------------------------------------------------
+// EXPORTED SELECTORS
+
+function getPostById(state, id) {
+  return FromPosts.getById(state.posts, id);
+}
+
+// -----------------------------------------------------------------------------
+// REDUCER EXPORT
+
+var _default = rootReducer;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(rootReducer, 'rootReducer', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/reducers/index.js');
+
+  __REACT_HOT_LOADER__.register(getPostById, 'getPostById', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/reducers/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/reducers/index.js');
+}();
+
+;

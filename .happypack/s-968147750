@@ -1,0 +1,174 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.contentCardSuccess = contentCardSuccess;
+exports.getContentCard = getContentCard;
+var CONTENT = exports.CONTENT = "CONTENT";
+
+function contentCardSuccess(res) {
+	return {
+		type: CONTENT,
+		payload: res
+	};
+}
+
+function getContentCard() {
+	return function (dispatch, state) {
+		var ContentData = [{
+			id: 1,
+			channel: "Ikea Channel",
+			timePublished: "1 Hour",
+			logo: "../assets/images/content-card/banner-icon1.png",
+			divider: "../assets/images/content-card/banner-icon-divider.png",
+			quickCategory: "../assets/images/content-card/banner-icon2.png",
+			contentType: "../assets/images/content-card/banner-icon3.png",
+			contentTitle: "Pastel & Paper Sculpted Pictures of Seas Horizons",
+			contentDiscription: "There are many variations of passages of Lorem Ipsum available, but the majority have",
+			trending: 5,
+			comments: 20,
+			image: "../assets/images/content-card/post-image1.jpg",
+			likes: 40,
+			category: "food"
+		}, {
+			id: 2,
+			channel: "Ikea Channel",
+			timePublished: "1 Hour",
+			logo: "../assets/images/content-card/banner-icon1.png",
+			divider: "../assets/images/content-card/banner-icon-divider.png",
+			quickCategory: "../assets/images/content-card/banner-icon2.png",
+			contentType: "../assets/images/content-card/banner-icon3.png",
+			contentTitle: "Pastel & Paper Sculpted Pictures of Seas Horizons",
+			contentDiscription: "There are many variations of passages of Lorem Ipsum available, but the majority have",
+			trending: 1.2,
+			comments: 20,
+			image: "../assets/images/content-card/post-image2.jpg",
+			likes: 20,
+			category: "travel"
+		}, {
+			id: 3,
+			channel: "Ikea Channel",
+			timePublished: "1 Hour",
+			logo: "../assets/images/content-card/banner-icon1.png",
+			divider: "../assets/images/content-card/banner-icon-divider.png",
+			quickCategory: "../assets/images/content-card/banner-icon2.png",
+			contentType: "../assets/images/content-card/banner-icon3.png",
+			contentTitle: "Pastel & Paper Sculpted Pictures of Seas Horizons",
+			contentDiscription: "There are many variations of passages of Lorem Ipsum available, but the majority have",
+			trending: 3.2,
+			comments: 20,
+			image: "../assets/images/content-card/post-image3.jpg",
+			likes: 66,
+			category: "music"
+		}, {
+			id: 4,
+			channel: "Ikea Channel",
+			timePublished: "1 Hour",
+			logo: "../assets/images/content-card/banner-icon1.png",
+			divider: "../assets/images/content-card/banner-icon-divider.png",
+			quickCategory: "../assets/images/content-card/banner-icon2.png",
+			contentType: "../assets/images/content-card/banner-icon3.png",
+			contentTitle: "Pastel & Paper Sculpted Pictures of Seas Horizons",
+			contentDiscription: "There are many variations of passages of Lorem Ipsum available, but the majority have",
+			trending: 10.7,
+			comments: 20,
+			image: "../assets/images/content-card/post-image4.jpg",
+			likes: 9,
+			category: "bikes"
+		}, {
+			id: 5,
+			channel: "Ikea Channel",
+			timePublished: "1 Hour",
+			logo: "../assets/images/content-card/banner-icon1.png",
+			divider: "../assets/images/content-card/banner-icon-divider.png",
+			quickCategory: "../assets/images/content-card/banner-icon2.png",
+			contentType: "../assets/images/content-card/banner-icon3.png",
+			contentTitle: "Pastel & Paper Sculpted Pictures of Seas Horizons",
+			contentDiscription: "There are many variations of passages of Lorem Ipsum available, but the majority have",
+			trending: 69,
+			comments: 20,
+			image: "../assets/images/content-card/post-image5.jpg",
+			likes: 50,
+			category: "bikes"
+		}, {
+			id: 6,
+			channel: "Ikea Channel",
+			timePublished: "1 Hour",
+			logo: "../assets/images/content-card/banner-icon1.png",
+			divider: "../assets/images/content-card/banner-icon-divider.png",
+			quickCategory: "../assets/images/content-card/banner-icon2.png",
+			contentType: "../assets/images/content-card/banner-icon3.png",
+			contentTitle: "Pastel & Paper Sculpted Pictures of Seas Horizons",
+			contentDiscription: "There are many variations of passages of Lorem Ipsum available, but the majority have",
+			trending: 99,
+			comments: 20,
+			image: "../assets/images/content-card/post-image6.jpg",
+			likes: 101,
+			category: "music"
+		}, {
+
+			id: 7,
+			channel: "Ikea Channel",
+			timePublished: "1 Hour",
+			logo: "../assets/images/content-card/banner-icon1.png",
+			divider: "../assets/images/content-card/banner-icon-divider.png",
+			quickCategory: "../assets/images/content-card/banner-icon2.png",
+			contentType: "../assets/images/content-card/banner-icon3.png",
+			contentTitle: "Pastel & Paper Sculpted Pictures of Seas Horizons",
+			contentDiscription: "There are many variations of passages of Lorem Ipsum available, but the majority have",
+			trending: 0.99,
+			comments: 20,
+			image: "../assets/images/content-card/post-image7.jpg",
+			likes: 89,
+			category: "travel"
+		}, {
+			id: 8,
+			channel: "Ikea Channel",
+			timePublished: "1 Hour",
+			logo: "../assets/images/content-card/banner-icon1.png",
+			divider: "../assets/images/content-card/banner-icon-divider.png",
+			quickCategory: "../assets/images/content-card/banner-icon2.png",
+			contentType: "../assets/images/content-card/banner-icon3.png",
+			contentTitle: "Pastel & Paper Sculpted Pictures of Seas Horizons",
+			contentDiscription: "There are many variations of passages of Lorem Ipsum available, but the majority have",
+			trending: 1,
+			comments: 20,
+			image: "../assets/images/content-card/post-image8.jpg",
+			likes: 200,
+			category: "food"
+		}, {
+			id: 9,
+			channel: "Ikea Channel",
+			timePublished: "1 Hour",
+			logo: "../assets/images/content-card/banner-icon1.png",
+			divider: "../assets/images/content-card/banner-icon-divider.png",
+			quickCategory: "../assets/images/content-card/banner-icon2.png",
+			contentType: "../assets/images/content-card/banner-icon3.png",
+			contentTitle: "Pastel & Paper Sculpted Pictures of Seas Horizons",
+			contentDiscription: "There are many variations of passages of Lorem Ipsum available, but the majority have",
+			trending: 1.2,
+			comments: 20,
+			image: "../assets/images/content-card/post-image9.jpg",
+			likes: 137,
+			category: "food"
+		}];
+
+		return dispatch(contentCardSuccess(ContentData));
+	};
+}
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(CONTENT, "CONTENT", "/home/spineor/risorso/shared/actions/contentcard_action.js");
+
+	__REACT_HOT_LOADER__.register(contentCardSuccess, "contentCardSuccess", "/home/spineor/risorso/shared/actions/contentcard_action.js");
+
+	__REACT_HOT_LOADER__.register(getContentCard, "getContentCard", "/home/spineor/risorso/shared/actions/contentcard_action.js");
+}();
+
+;

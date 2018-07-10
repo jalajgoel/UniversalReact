@@ -1,0 +1,419 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var _jsxFileName = '/home/spineor/risorso/shared/components/ContentCard.js';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _contentcard_action = require('../actions/contentcard_action');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class ContentCard extends _react.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	componentWillMount() {
+		this.props.getContentCard();
+	}
+
+	render() {
+		var obj;
+		if (this.props.contentdata.viewContentCard.result) {
+			if (this.props.contentdata.viewContentCard.result.length > 0) {
+				if (this.props.like) {
+
+					obj = this.props.contentdata.viewContentCard.result.sort((a, b) => a.likes < b.likes);
+				}
+				if (this.props.trend) {
+					obj = this.props.contentdata.viewContentCard.result.sort((a, b) => a.trending < b.trending);
+				} else {
+					obj = this.props.contentdata.viewContentCard.result;
+				}
+				var my = this;
+				var contentMapping = obj.map(function (data) {
+
+					return _react2.default.createElement(
+						'div',
+						{ key: data.id, className: my.props.layout3 == true || my.props.layout4 == false ? "col-xs-6 col-sm-6 col-md-4 col-lg-4 no_padding padding_left" : my.props.layout4 == true || my.props.layout3 == false ? "col-xs-6 col-sm-6 col-md-3 col-lg-3 no_padding padding_left" : "col-xs-6 col-sm-6 col-md-4 col-lg-4 no_padding padding_left", __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 38
+							}
+						},
+						_react2.default.createElement(
+							'div',
+							{ className: 'panel content-card', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 39
+								}
+							},
+							_react2.default.createElement('img', { className: 'img-responsive card-image', src: data.image, alt: 'content card img', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 40
+								}
+							}),
+							_react2.default.createElement(
+								'div',
+								{ className: 'panel-body', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 41
+									}
+								},
+								_react2.default.createElement(
+									'div',
+									{ className: 'content-card-section1', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 42
+										}
+									},
+									_react2.default.createElement(
+										'div',
+										{ className: 'content-card-title', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 43
+											}
+										},
+										_react2.default.createElement(
+											'p',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 44
+												}
+											},
+											data.channel,
+											', ',
+											_react2.default.createElement(
+												'span',
+												{ className: 'text-muted', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 44
+													}
+												},
+												data.timePublished
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'content-card-info', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 46
+											}
+										},
+										_react2.default.createElement(
+											'a',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 47
+												}
+											},
+											_react2.default.createElement(
+												'h3',
+												{
+													__self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 47
+													}
+												},
+												data.contentTitle
+											)
+										),
+										_react2.default.createElement(
+											'p',
+											{ className: 'text-muted', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 48
+												}
+											},
+											data.contentDiscription
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'content-card-section2', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 51
+										}
+									},
+									_react2.default.createElement(
+										'ul',
+										{
+											__self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 52
+											}
+										},
+										_react2.default.createElement(
+											'li',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 53
+												}
+											},
+											_react2.default.createElement('img', { src: data.logo, 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Channel Logo', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 53
+												}
+											})
+										),
+										_react2.default.createElement(
+											'li',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 54
+												}
+											},
+											_react2.default.createElement('img', { src: data.divider, __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 54
+												}
+											})
+										),
+										_react2.default.createElement(
+											'li',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 55
+												}
+											},
+											_react2.default.createElement('img', { src: data.quickCategory, 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Quick Category', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 55
+												}
+											})
+										),
+										_react2.default.createElement(
+											'li',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 56
+												}
+											},
+											_react2.default.createElement('img', { src: data.divider, __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 56
+												}
+											})
+										),
+										_react2.default.createElement(
+											'li',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 57
+												}
+											},
+											_react2.default.createElement('img', { src: data.contentType, 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Content Type', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 57
+												}
+											})
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'content-card-footer', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 60
+										}
+									},
+									_react2.default.createElement(
+										'ul',
+										{
+											__self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 61
+											}
+										},
+										_react2.default.createElement(
+											'li',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 62
+												}
+											},
+											_react2.default.createElement('i', { className: 'ico-icon42 footer-icons', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Trending', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 62
+												}
+											}),
+											_react2.default.createElement(
+												'span',
+												{ className: 'text-muted', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 62
+													}
+												},
+												data.trending
+											)
+										),
+										_react2.default.createElement(
+											'li',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 63
+												}
+											},
+											_react2.default.createElement('img', { src: '../assets/images/content-card/property-divider.png', alt: 'card-footer items', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 63
+												}
+											})
+										),
+										_react2.default.createElement(
+											'li',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 64
+												}
+											},
+											_react2.default.createElement('i', { className: 'ico-icon44 footer-icons text-muted', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Comments', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 64
+												}
+											}),
+											_react2.default.createElement(
+												'span',
+												{ className: 'text-muted', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 64
+													}
+												},
+												data.comments
+											)
+										),
+										_react2.default.createElement(
+											'li',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 65
+												}
+											},
+											_react2.default.createElement('img', { src: '../assets/images/content-card/property-divider.png', alt: 'card-footer items', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 65
+												}
+											})
+										),
+										_react2.default.createElement(
+											'li',
+											{
+												__self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 66
+												}
+											},
+											_react2.default.createElement('i', { className: 'ico-icon43 footer-icons text-muted', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Likes', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 66
+												}
+											}),
+											_react2.default.createElement(
+												'span',
+												{ className: 'text-muted', __self: this,
+													__source: {
+														fileName: _jsxFileName,
+														lineNumber: 66
+													}
+												},
+												data.likes
+											)
+										)
+									)
+								)
+							)
+						)
+					);
+				});
+			}
+		}
+
+		return _react2.default.createElement(
+			'div',
+			{
+				__self: this,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 80
+				}
+			},
+			contentMapping
+		);
+	}
+}
+
+function mapStateToProps(state) {
+	const contentdata = state;
+	return { contentdata };
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		getContentCard: () => {
+			dispatch((0, _contentcard_action.getContentCard)());
+		}
+	};
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ContentCard);

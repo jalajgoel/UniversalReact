@@ -1,0 +1,341 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var _jsxFileName = '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/Header.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _Search = require('./Search');
+
+var _Search2 = _interopRequireDefault(_Search);
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Header = function (_Component) {
+	_inherits(Header, _Component);
+
+	function Header() {
+		_classCallCheck(this, Header);
+
+		return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+	}
+
+	_createClass(Header, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			// to change css of layout selectors
+			(0, _jquery2.default)(document).ready(function () {
+				(0, _jquery2.default)(".3colview").css("background-color", "#1b2e9d");
+				(0, _jquery2.default)(".3colview").on("click", function () {
+					(0, _jquery2.default)(this).css("background-color", "#1b2e9d");
+					(0, _jquery2.default)(".4colview").css("background-color", "transparent");
+				});
+				(0, _jquery2.default)(".4colview").on("click", function () {
+					(0, _jquery2.default)(this).css("background-color", "#1b2e9d");
+					(0, _jquery2.default)(".3colview").css("background-color", "transparent");
+				});
+			});
+
+			// to change css of sort buttons
+			(0, _jquery2.default)(document).ready(function () {
+				(0, _jquery2.default)(".likeSort").css("background-color", "transparent");
+				(0, _jquery2.default)(".trendSort").css("background-color", "transparent");
+				(0, _jquery2.default)(".likeSort").on("click", function () {
+					(0, _jquery2.default)(this).css("background-color", "#1b2e9d");
+					(0, _jquery2.default)(".trendSort").css("background-color", "transparent");
+				});
+				(0, _jquery2.default)(".trendSort").on("click", function () {
+					(0, _jquery2.default)(this).css("background-color", "#1b2e9d");
+					(0, _jquery2.default)(".likeSort").css("background-color", "transparent");
+				});
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'container-fluid', __self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 41
+					}
+				},
+				_react2.default.createElement(
+					'div',
+					{ className: 'row header-section', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 42
+						}
+					},
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-md-2 col-lg-2  header-logo', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Risorso', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 43
+							}
+						},
+						_react2.default.createElement(
+							'a',
+							{ href: '#', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 44
+								}
+							},
+							_react2.default.createElement('img', { src: '../assets/images/main_logo.png', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 44
+								}
+							})
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-md-6 col-lg-6', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 46
+							}
+						},
+						_react2.default.createElement(_Search2.default, {
+							__self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 47
+							}
+						})
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-md-2 col-lg-2', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 50
+							}
+						},
+						_react2.default.createElement(
+							'ul',
+							{ className: 'list-icons', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 51
+								}
+							},
+							_react2.default.createElement(
+								'li',
+								{
+									__self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 52
+									}
+								},
+								_react2.default.createElement('i', { className: 'ico-icon30 3colview', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: '3 Column View', onClick: this.props.layout3, __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 52
+									}
+								})
+							),
+							_react2.default.createElement(
+								'li',
+								{
+									__self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 53
+									}
+								},
+								_react2.default.createElement('i', { className: 'ico-icon29 4colview', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: '4 Column View', onClick: this.props.layout4, __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 53
+									}
+								})
+							),
+							_react2.default.createElement(
+								'li',
+								{
+									__self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 54
+									}
+								},
+								_react2.default.createElement('i', { className: 'ico-icon28 likeSort', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Sort by Likes', onClick: this.props.likesort, __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 54
+									}
+								})
+							),
+							_react2.default.createElement(
+								'li',
+								{
+									__self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 55
+									}
+								},
+								_react2.default.createElement('i', { className: 'ico-icon27 trendSort', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Sort By Trending', onClick: this.props.trendsort, __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 55
+									}
+								})
+							)
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-md-2 col-lg-2 video-header', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 58
+							}
+						},
+						_react2.default.createElement(
+							'div',
+							{ className: 'dropdown', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Videos', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 59
+								}
+							},
+							_react2.default.createElement(
+								'button',
+								{ className: 'btn dropdown-toggle video-button', type: 'button', id: 'dropdownMenuButton', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 60
+									}
+								},
+								'Videos'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'dropdown-menu video-list', 'aria-labelledby': 'dropdownMenuButton', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 63
+									}
+								},
+								_react2.default.createElement(
+									'ul',
+									{ className: 'menu_list', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 64
+										}
+									},
+									_react2.default.createElement(
+										'li',
+										{ className: 'list_item', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 65
+											}
+										},
+										_react2.default.createElement(
+											'a',
+											{ className: 'dropdown-item', href: '#', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 65
+												}
+											},
+											'Videos'
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										{ className: 'list_item', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 66
+											}
+										},
+										_react2.default.createElement(
+											'a',
+											{ className: 'dropdown-item', href: '#', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 66
+												}
+											},
+											'Images'
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										{ className: 'list_item', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 67
+											}
+										},
+										_react2.default.createElement(
+											'a',
+											{ className: 'dropdown-item', href: '#', __self: this,
+												__source: {
+													fileName: _jsxFileName,
+													lineNumber: 67
+												}
+											},
+											'List'
+										)
+									)
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Header;
+}(_react.Component);
+
+var _default = Header;
+exports.default = _default;
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(Header, 'Header', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/Header.js');
+
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/Header.js');
+}();
+
+;

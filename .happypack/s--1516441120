@@ -1,0 +1,99 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TrendingTopics = function (_Component) {
+	_inherits(TrendingTopics, _Component);
+
+	function TrendingTopics() {
+		_classCallCheck(this, TrendingTopics);
+
+		return _possibleConstructorReturn(this, (TrendingTopics.__proto__ || Object.getPrototypeOf(TrendingTopics)).apply(this, arguments));
+	}
+
+	_createClass(TrendingTopics, [{
+		key: 'render',
+		value: function render() {
+			return _jsx('div', {
+				className: 'sidebar2'
+			}, void 0, _jsx('div', {
+				className: 'row no_margin'
+			}, void 0, _jsx('div', {
+				className: 'col-sm-12 no_padding'
+			}, void 0, _jsx('div', {
+				className: 'row trending-heading no_margin'
+			}, void 0, _jsx('div', {
+				className: 'col-sm-12'
+			}, void 0, _jsx('p', {
+				className: 'text trending_text'
+			}, void 0, 'Trending Topics'))), _jsx('div', {
+				className: 'sidebar_content1'
+			}, void 0, _jsx('div', {
+				className: 'trending_input'
+			}, void 0, _jsx('form', {}, void 0, _jsx('div', {
+				className: 'input-group'
+			}, void 0, _jsx('input', {
+				type: 'text',
+				name: 'trendingSearch',
+				placeholder: 'Search All Topics',
+				className: 'form-control trending_search'
+			}), _jsx('span', {
+				className: 'input-group-addon trending_search_icon'
+			}, void 0, _jsx('i', {
+				className: 'fa fa-search',
+				'aria-hidden': 'true',
+				'data-toggle': 'tooltip',
+				'data-placement': 'top',
+				title: 'Search Trending Topics'
+			}))))), _jsx('ul', {
+				className: 'tending_content no_padding no_margin'
+			}, void 0, _jsx('li', {
+				className: 'trending_data'
+			}, void 0, _jsx('p', {}, void 0, '#livefood')), _jsx('li', {
+				className: 'trending_data'
+			}, void 0, _jsx('p', {}, void 0, '#food')), _jsx('li', {
+				className: 'trending_data'
+			}, void 0, _jsx('p', {}, void 0, '#news')), _jsx('li', {
+				className: 'trending_data'
+			}, void 0, _jsx('p', {}, void 0, '#channelturkey')), _jsx('li', {
+				className: 'trending_data'
+			}, void 0, _jsx('p', {}, void 0, '#colorfashion')), _jsx('li', {
+				className: 'trending_data'
+			}, void 0, _jsx('p', {}, void 0, '#livefoood')), _jsx('li', {
+				className: 'trending_data'
+			}, void 0, _jsx('p', {}, void 0, '#livefoood')), _jsx('li', {
+				className: 'trending_data'
+			}, void 0, _jsx('p', {}, void 0, '#livefoood')), _jsx('li', {
+				className: 'trending_data'
+			}, void 0, _jsx('p', {}, void 0, '#livefoood')))))));
+		}
+	}]);
+
+	return TrendingTopics;
+}(_react.Component);
+
+exports.default = TrendingTopics;

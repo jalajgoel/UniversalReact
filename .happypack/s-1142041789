@@ -1,0 +1,23 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = viewContentCard;
+
+var _contentcard_action = require("../actions/contentcard_action");
+
+const initialState = {
+	result: []
+};
+
+function viewContentCard(state = initialState, action) {
+	switch (action.type) {
+		case "CONTENT":
+			return {
+				result: action.payload
+			};
+		default:
+			return state;
+	}
+};

@@ -1,0 +1,54 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.quickCategories_Success = quickCategories_Success;
+exports.getQuickCategories_Data = getQuickCategories_Data;
+var QUICK = exports.QUICK = 'QUICK';
+
+function quickCategories_Success(res) {
+	return {
+		type: QUICK,
+		payload: res
+	};
+}
+
+function getQuickCategories_Data() {
+
+	return function (dispatch, state) {
+
+		return fetch('http://192.168.20.168:4000/api/categories', {
+			method: "get"
+		}).then(function (res) {
+			return res.json();
+		}).then(function (res) {
+			if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+				var quickData = res.categories;
+				return dispatch(quickCategories_Success(quickData));
+			} else {
+				return dispatch(contentCardError(res));
+			}
+		}).catch(function (error) {
+			return dispatch(contentCardError(error));
+		});
+	};
+}
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(QUICK, 'QUICK', '/home/spineor/risorso/shared/actions/quickCategories_action.js');
+
+	__REACT_HOT_LOADER__.register(quickCategories_Success, 'quickCategories_Success', '/home/spineor/risorso/shared/actions/quickCategories_action.js');
+
+	__REACT_HOT_LOADER__.register(getQuickCategories_Data, 'getQuickCategories_Data', '/home/spineor/risorso/shared/actions/quickCategories_action.js');
+}();
+
+;

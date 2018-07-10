@@ -1,0 +1,128 @@
+'use strict';
+
+var _jsxFileName = '/home/spineor/Documents/risorso /newSetup_frontend/react-universally/client/index.js'; /* eslint-disable global-require */
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _BrowserRouter = require('react-router-dom/BrowserRouter');
+
+var _BrowserRouter2 = _interopRequireDefault(_BrowserRouter);
+
+var _reactAsyncBootstrapper = require('react-async-bootstrapper');
+
+var _reactAsyncBootstrapper2 = _interopRequireDefault(_reactAsyncBootstrapper);
+
+var _reactAsyncComponent = require('react-async-component');
+
+require('./polyfills');
+
+var _ReactHotLoader = require('./components/ReactHotLoader');
+
+var _ReactHotLoader2 = _interopRequireDefault(_ReactHotLoader);
+
+var _DemoApp = require('../shared/components/DemoApp');
+
+var _DemoApp2 = _interopRequireDefault(_DemoApp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Get the DOM Element that will host our React application.
+var container = document.querySelector('#app');
+
+// Does the user's browser support the HTML5 history API?
+// If the user's browser doesn't support the HTML5 history API then we
+// will force full page refreshes on each page change.
+var supportsHistory = 'pushState' in window.history;
+
+// Get any rehydrateState for the async components.
+// eslint-disable-next-line no-underscore-dangle
+var asyncComponentsRehydrateState = window.__ASYNC_COMPONENTS_REHYDRATE_STATE__;
+
+/**
+ * Renders the given React Application component.
+ */
+function renderApp(TheApp) {
+  // Firstly, define our full application component, wrapping the given
+  // component app with a browser based version of react router.
+  var app = _react2.default.createElement(
+    _ReactHotLoader2.default,
+    {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 33
+      }
+    },
+    _react2.default.createElement(
+      _reactAsyncComponent.AsyncComponentProvider,
+      { rehydrateState: asyncComponentsRehydrateState, __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        }
+      },
+      _react2.default.createElement(
+        _BrowserRouter2.default,
+        { forceRefresh: !supportsHistory, __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 35
+          }
+        },
+        _react2.default.createElement(TheApp, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 36
+          }
+        })
+      )
+    )
+  );
+
+  // We use the react-async-component in order to support code splitting of
+  // our bundle output. It's important to use this helper.
+  // @see https://github.com/ctrlplusb/react-async-component
+  (0, _reactAsyncBootstrapper2.default)(app).then(function () {
+    return (0, _reactDom.render)(app, container);
+  });
+}
+
+// Execute the first render of our app.
+renderApp(_DemoApp2.default);
+
+// This registers our service worker for asset caching and offline support.
+// Keep this as the last item, just in case the code execution failed (thanks
+// to react-boilerplate for that tip.)
+require('./registerServiceWorker');
+
+// The following is needed so that we can support hot reloading our application.
+if (process.env.BUILD_FLAG_IS_DEV === 'true' && module.hot) {
+  // Accept changes to this file for hot reloading.
+  module.hot.accept('./index.js');
+  // Any changes to our App will cause a hotload re-render.
+  module.hot.accept('../shared/components/DemoApp', function () {
+    renderApp(require('../shared/components/DemoApp').default);
+  });
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(container, 'container', '/home/spineor/Documents/risorso /newSetup_frontend/react-universally/client/index.js');
+
+  __REACT_HOT_LOADER__.register(supportsHistory, 'supportsHistory', '/home/spineor/Documents/risorso /newSetup_frontend/react-universally/client/index.js');
+
+  __REACT_HOT_LOADER__.register(asyncComponentsRehydrateState, 'asyncComponentsRehydrateState', '/home/spineor/Documents/risorso /newSetup_frontend/react-universally/client/index.js');
+
+  __REACT_HOT_LOADER__.register(renderApp, 'renderApp', '/home/spineor/Documents/risorso /newSetup_frontend/react-universally/client/index.js');
+}();
+
+;

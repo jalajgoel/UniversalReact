@@ -1,0 +1,70 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.QUICK = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.getQuickCategories_Data = getQuickCategories_Data;
+
+var _variables = require('../../variables');
+
+var _variables2 = _interopRequireDefault(_variables);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var QUICK = exports.QUICK = 'QUICK';
+
+// sending received quickcategories response to reducer
+function quickCategories_Success(res) {
+  return {
+    type: QUICK,
+    payload: res
+  };
+}
+
+// to handle error
+function quickCategories_Error(err) {
+  return {
+    type: ERROR,
+    payload: err
+  };
+}
+
+// sending request to backend for quickcategories
+function getQuickCategories_Data() {
+  return function (dispatch, state) {
+    return fetch(_variables2.default.url.liveURL + '/api/categories', {
+      method: 'get'
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+        var quickData = res.categories;
+        return dispatch(quickCategories_Success(quickData));
+      }
+      return dispatch(quickCategories_Error(res));
+    }).catch(function (error) {
+      return dispatch(quickCategories_Error(error));
+    });
+  };
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(QUICK, 'QUICK', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/quickCategories_action.js');
+
+  __REACT_HOT_LOADER__.register(quickCategories_Success, 'quickCategories_Success', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/quickCategories_action.js');
+
+  __REACT_HOT_LOADER__.register(quickCategories_Error, 'quickCategories_Error', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/quickCategories_action.js');
+
+  __REACT_HOT_LOADER__.register(getQuickCategories_Data, 'getQuickCategories_Data', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/quickCategories_action.js');
+}();
+
+;

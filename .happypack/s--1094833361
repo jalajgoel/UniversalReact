@@ -1,0 +1,147 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/components/App.js';
+
+// for rou
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _ContentCard = require('./ContentCard');
+
+var _ContentCard2 = _interopRequireDefault(_ContentCard);
+
+var _Header = require('./Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Sidebar = require('./Sidebar');
+
+var _Sidebar2 = _interopRequireDefault(_Sidebar);
+
+var _Login = require('./Login');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+var _reactRouterDom = require('react-router-dom');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class App extends _react.Component {
+  constructor() {
+    super();
+    this.state = {
+      showLayoutOf4: false,
+      showLayoutOf3: false,
+      likeSort: false,
+      trendSort: false
+    };
+  }
+
+  // layout selectors
+  toggleLayout3() {
+    this.setState({
+      showLayoutOf3: true,
+      showLayoutOf4: false
+    });
+  }
+  toggleLayout4() {
+    this.setState({
+      showLayoutOf3: false,
+      showLayoutOf4: true
+    });
+  }
+
+  // content sorting options
+  toggleLikeSort() {
+    this.setState({ likeSort: !this.state.likeSort });
+  }
+
+  toggleTrendSort() {
+    this.setState({ trendSort: !this.state.trendSort });
+  }
+
+  render() {
+
+    return _react2.default.createElement(
+      'div',
+      { id: 'row', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 52
+        }
+      },
+      _react2.default.createElement(_Header2.default, { layout3: this.toggleLayout3.bind(this), layout4: this.toggleLayout4.bind(this), likesort: this.toggleLikeSort.bind(this), trendsort: this.toggleTrendSort.bind(this), __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 53
+        }
+      }),
+      _react2.default.createElement(
+        'div',
+        { className: 'container-fluid content no_padding', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 54
+          }
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'col-sm-2 no_padding', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 55
+            }
+          },
+          _react2.default.createElement(_Sidebar2.default, {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 56
+            }
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'col-xs-10 no_padding', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 58
+            }
+          },
+          _react2.default.createElement(
+            'div',
+            { className: 'row no_margin', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 59
+              }
+            },
+            _react2.default.createElement(_ContentCard2.default, { layout3: this.state.showLayoutOf3, layout4: this.state.showLayoutOf4, like: this.state.likeSort, trend: this.state.trendSort, __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 60
+              }
+            })
+          )
+        )
+      )
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {};
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);

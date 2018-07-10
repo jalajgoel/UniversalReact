@@ -1,0 +1,62 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.ulpoadImage = ulpoadImage;
+
+var _configureStore = require('../redux/configureStore');
+
+var _configureStore2 = _interopRequireDefault(_configureStore);
+
+require('fetch-everywhere');
+
+var _variables = require('../../variables');
+
+var _variables2 = _interopRequireDefault(_variables);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function uploadSuccess(res) {
+  return {
+    type: UPLOAD,
+    payload: res
+  };
+}
+
+function ulpoadImage(path) {
+  console.log('action', path);
+  return function (dispatch, state) {
+    return fetch(_variables2.default.url.liveURL + '/api/profile', {
+      method: 'post',
+      headers: {
+        Accept: 'application/json , text/plain, */*',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(path)
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      console.log(res);
+      if ((typeof res === 'undefined' ? 'undefined' : _typeof(res)) === 'object') {
+        return dispatch(uploadSuccess(res));
+      }
+    });
+  };
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(uploadSuccess, 'uploadSuccess', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/upload_action.js');
+
+  __REACT_HOT_LOADER__.register(ulpoadImage, 'ulpoadImage', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/actions/upload_action.js');
+}();
+
+;

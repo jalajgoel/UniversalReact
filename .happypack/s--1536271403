@@ -1,0 +1,275 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var _jsxFileName = '/home/spineor/risorso/shared/components/Header.js';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _Search = require('./Search');
+
+var _Search2 = _interopRequireDefault(_Search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class Header extends _react.Component {
+
+	componentDidMount() {}
+
+	render() {
+		return _react2.default.createElement(
+			'div',
+			{ className: 'container-fluid', __self: this,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 14
+				}
+			},
+			_react2.default.createElement(
+				'div',
+				{ className: 'row header-section', __self: this,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 15
+					}
+				},
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-md-2 col-lg-2  header-logo', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Risorso', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 16
+						}
+					},
+					_react2.default.createElement(
+						'a',
+						{ href: '#', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 17
+							}
+						},
+						_react2.default.createElement('img', { src: '../assets/images/main_logo.png', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 17
+							}
+						})
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-md-6 col-lg-6', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 19
+						}
+					},
+					_react2.default.createElement(_Search2.default, {
+						__self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 20
+						}
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-md-2 col-lg-2', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 23
+						}
+					},
+					_react2.default.createElement(
+						'ul',
+						{ className: 'list-icons', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 24
+							}
+						},
+						_react2.default.createElement(
+							'li',
+							{
+								__self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 25
+								}
+							},
+							_react2.default.createElement('i', { className: 'ico-icon30', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: '3 Column View', onClick: this.props.layout3, __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 25
+								}
+							})
+						),
+						_react2.default.createElement(
+							'li',
+							{
+								__self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 26
+								}
+							},
+							_react2.default.createElement('i', { className: 'ico-icon29', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: '4 Column View', onClick: this.props.layout4, __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 26
+								}
+							})
+						),
+						_react2.default.createElement(
+							'li',
+							{
+								__self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 27
+								}
+							},
+							_react2.default.createElement('i', { className: 'ico-icon28', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Sort by Likes', onClick: this.props.likesort, __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 27
+								}
+							})
+						),
+						_react2.default.createElement(
+							'li',
+							{
+								__self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 28
+								}
+							},
+							_react2.default.createElement('i', { className: 'ico-icon27', 'aria-hidden': 'true', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Sort By Trending', onClick: this.props.trendsort, __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 28
+								}
+							})
+						)
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-md-2 col-lg-2 video-header', __self: this,
+						__source: {
+							fileName: _jsxFileName,
+							lineNumber: 31
+						}
+					},
+					_react2.default.createElement(
+						'div',
+						{ className: 'dropdown', 'data-toggle': 'tooltip', 'data-placement': 'top', title: 'Videos', __self: this,
+							__source: {
+								fileName: _jsxFileName,
+								lineNumber: 32
+							}
+						},
+						_react2.default.createElement(
+							'button',
+							{ className: 'btn dropdown-toggle video-button', type: 'button', id: 'dropdownMenuButton', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 33
+								}
+							},
+							'Videos'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'dropdown-menu video-list', 'aria-labelledby': 'dropdownMenuButton', __self: this,
+								__source: {
+									fileName: _jsxFileName,
+									lineNumber: 36
+								}
+							},
+							_react2.default.createElement(
+								'ul',
+								{ className: 'menu_list', __self: this,
+									__source: {
+										fileName: _jsxFileName,
+										lineNumber: 37
+									}
+								},
+								_react2.default.createElement(
+									'li',
+									{ className: 'list_item', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 38
+										}
+									},
+									_react2.default.createElement(
+										'a',
+										{ className: 'dropdown-item', href: '#', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 38
+											}
+										},
+										'Videos'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									{ className: 'list_item', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 39
+										}
+									},
+									_react2.default.createElement(
+										'a',
+										{ className: 'dropdown-item', href: '#', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 39
+											}
+										},
+										'Images'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									{ className: 'list_item', __self: this,
+										__source: {
+											fileName: _jsxFileName,
+											lineNumber: 40
+										}
+									},
+									_react2.default.createElement(
+										'a',
+										{ className: 'dropdown-item', href: '#', __self: this,
+											__source: {
+												fileName: _jsxFileName,
+												lineNumber: 40
+											}
+										},
+										'List'
+									)
+								)
+							)
+						)
+					)
+				)
+			)
+		);
+	}
+}
+
+exports.default = Header;

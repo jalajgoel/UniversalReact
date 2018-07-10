@@ -1,0 +1,60 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.getById = getById;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// -----------------------------------------------------------------------------
+// PRIVATES
+
+var defaultState = {};
+
+// -----------------------------------------------------------------------------
+// REDUCER
+
+function byId() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var action = arguments[1];
+
+  if (action.type === 'FETCHED_POST') {
+    return _extends({}, state, _defineProperty({}, action.payload.id, action.payload));
+  }
+
+  return state;
+}
+
+// -----------------------------------------------------------------------------
+// EXPORTED SELECTORS
+
+function getById(state, id) {
+  return state[id];
+}
+
+// -----------------------------------------------------------------------------
+// EXPORTED REDUCER
+
+var _default = byId;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(defaultState, 'defaultState', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/reducers/posts/byId.js');
+
+  __REACT_HOT_LOADER__.register(byId, 'byId', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/reducers/posts/byId.js');
+
+  __REACT_HOT_LOADER__.register(getById, 'getById', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/reducers/posts/byId.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/spineor/Documents/risorso /newSetup_frontend/risorso/shared/reducers/posts/byId.js');
+}();
+
+;

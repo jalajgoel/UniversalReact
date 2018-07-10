@@ -1,0 +1,405 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Header.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _Search = require('./Search');
+
+var _Search2 = _interopRequireDefault(_Search);
+
+var _reactDropdown = require('react-dropdown');
+
+var _reactDropdown2 = _interopRequireDefault(_reactDropdown);
+
+var _contentcard_action = require('../actions/contentcard_action');
+
+var _reactRouterDom = require('react-router-dom');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Header = function (_Component) {
+  _inherits(Header, _Component);
+
+  function Header(props) {
+    _classCallCheck(this, Header);
+
+    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+
+    _this.state = {
+      lout3: true,
+      lout4: false,
+      layout3: _this.props.layout3,
+      layout4: _this.props.layout4,
+      trendingsort: _this.props.trendingsort,
+      likesort: _this.props.likesort,
+      likelout: false,
+      trendlout: true,
+      dropdownOptions: [{ value: 'Videos', label: 'video' }, { value: 'Images', label: 'image' }, { value: 'List', label: 'lists' }],
+      bollean: false,
+      filterSelect: '',
+      scroll: false
+    };
+    return _this;
+  }
+
+  _createClass(Header, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      window.addEventListener('scroll', this.handleScroll.bind(this));
+    }
+
+    // Function To add class when header is fix
+
+  }, {
+    key: 'handleScroll',
+    value: function handleScroll() {
+      var d = document.documentElement;
+      var offset = d.scrollTop;
+      if (offset == 0) {
+        this.setState({
+          scroll: false
+        });
+      } else {
+        this.setState({
+          scroll: true
+        });
+      }
+    }
+    // For changing the background color on front page and call the action
+
+  }, {
+    key: 'fill_bg_layout3',
+    value: function fill_bg_layout3() {
+      this.state.layout3();
+      this.setState({
+        lout3: true,
+        lout4: false
+      });
+    }
+    // For changing the background color on front page and call the action
+
+  }, {
+    key: 'fill_bg_layout4',
+    value: function fill_bg_layout4() {
+      this.state.layout4();
+      this.setState({
+        lout3: false,
+        lout4: true
+      });
+    }
+    // Filtering function for dropdown filters
+
+  }, {
+    key: 'setFilter',
+    value: function setFilter(filter) {
+      this.setState({
+        filterSelect: filter
+      });
+      this.props.getFilter(filter.label, this.state.likelout, this.state.trendlout);
+    }
+    // For changing the background color on front page and call the action
+
+  }, {
+    key: 'fill_bg_likesort',
+    value: function fill_bg_likesort() {
+      if (this.state.filterSelect) {
+        console.log('if');
+        console.log(this.state.filterSelect.label);
+        this.props.getFilter(this.state.filterSelect.label, this.state.likelout, this.state.trendlout);
+      } else {
+        console.log('else');
+        this.state.likesort();
+      }
+
+      this.setState({
+        likelout: !this.state.likelout
+      });
+    }
+    // For changing the background color on front page and call the action
+
+  }, {
+    key: 'fill_bg_trendingsort',
+    value: function fill_bg_trendingsort() {
+      if (this.state.filterSelect) {
+        console.log('if');
+        console.log(this.state.filterSelect.label);
+        this.props.getFilter(this.state.filterSelect.label, this.state.likelout, this.state.trendlout);
+      } else {
+        console.log('else');
+        this.state.trendingsort();
+      }
+      this.setState({
+        trendlout: !this.state.trendlout
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var array = this.state.dropdownOptions;
+      return _react2.default.createElement(
+        'div',
+        { className: 'container', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 114
+          }
+        },
+        _react2.default.createElement(
+          'div',
+          { className: this.state.scroll ? 'row header-section scroll' : 'row header-section', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 115
+            }
+          },
+          _react2.default.createElement(
+            'div',
+            {
+              className: 'col-md-2 col-lg-2  header-logo',
+              'data-toggle': 'tooltip',
+              'data-placement': 'top',
+              title: 'Risorso',
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 116
+              }
+            },
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: '/', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 122
+                }
+              },
+              _react2.default.createElement('img', { src: '../assets/images/main_logo.png', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 123
+                }
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-6 col-lg-6 search-wapper', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 126
+              }
+            },
+            _react2.default.createElement(_Search2.default, {
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 127
+              }
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-2 col-lg-2 list-icons-wapper', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 130
+              }
+            },
+            _react2.default.createElement(
+              'ul',
+              { className: 'list-icons', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 131
+                }
+              },
+              _react2.default.createElement(
+                'li',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 132
+                  }
+                },
+                _react2.default.createElement('i', {
+                  className: this.state.lout3 == true ? 'ico-icon30 bgcolor' : 'ico-icon30 no_bgcolor',
+                  'aria-hidden': 'true',
+                  'data-toggle': 'tooltip',
+                  'data-placement': 'top',
+                  title: '3 Column View',
+                  onClick: this.fill_bg_layout3.bind(this),
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 133
+                  }
+                })
+              ),
+              _react2.default.createElement(
+                'li',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 144
+                  }
+                },
+                _react2.default.createElement('i', {
+                  className: this.state.lout4 == true ? 'ico-icon29 bgcolor' : 'ico-icon29 no_bgcolor',
+                  'aria-hidden': 'true',
+                  'data-toggle': 'tooltip',
+                  'data-placement': 'top',
+                  title: '4 Column View',
+                  onClick: this.fill_bg_layout4.bind(this),
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 145
+                  }
+                })
+              ),
+              _react2.default.createElement(
+                'li',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 156
+                  }
+                },
+                _react2.default.createElement('i', {
+                  className: this.state.likelout == true ? 'ico-icon28 bgcolor' : 'ico-icon28 no_bgcolor',
+                  'aria-hidden': 'true',
+                  'data-toggle': 'tooltip',
+                  'data-placement': 'top',
+                  title: 'Sort by Likes',
+                  onClick: this.fill_bg_likesort.bind(this),
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 157
+                  }
+                })
+              ),
+              _react2.default.createElement(
+                'li',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 168
+                  }
+                },
+                _react2.default.createElement('i', {
+                  className: this.state.trendlout == true ? 'ico-icon27 bgcolor' : 'ico-icon27 no_bgcolor',
+                  'aria-hidden': 'true',
+                  'data-toggle': 'tooltip',
+                  'data-placement': 'top',
+                  title: 'Sort By Trending',
+                  onClick: this.fill_bg_trendingsort.bind(this),
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 169
+                  }
+                })
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-2 col-lg-2 video-header', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 182
+              }
+            },
+            _react2.default.createElement(
+              'div',
+              {
+                className: 'dropdown_menu',
+                'data-toggle': 'tooltip',
+                'data-placement': 'top',
+                title: 'Videos',
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 183
+                }
+              },
+              _react2.default.createElement(_reactDropdown2.default, {
+                className: 'dropdown',
+                options: array,
+                onChange: this.setFilter.bind(this),
+                value: this.state.filterSelect,
+                placeholder: 'Videos',
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 189
+                }
+              })
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Header;
+}(_react.Component);
+
+function mapStateToProps(state) {
+  var header = state;
+  return { header: header };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getFilter: function getFilter(filter, like, trend) {
+      dispatch((0, _contentcard_action.getTypeFilter)(filter, like, trend));
+    }
+  };
+}
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Header);
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Header, 'Header', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Header.js');
+
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Header.js');
+
+  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Header.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/Header.js');
+}();
+
+;

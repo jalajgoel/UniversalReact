@@ -1,0 +1,358 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/SignUp.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactHelmet = require('react-helmet');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _signup_action = require('../actions/signup_action');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SignUp = function (_Component) {
+  _inherits(SignUp, _Component);
+
+  function SignUp(props) {
+    _classCallCheck(this, SignUp);
+
+    var _this = _possibleConstructorReturn(this, (SignUp.__proto__ || Object.getPrototypeOf(SignUp)).call(this, props));
+
+    _this.state = {
+      email: '',
+      password: '',
+      message: '',
+      email_msg: '',
+      password_msg: '',
+      response: ''
+    };
+    return _this;
+  }
+
+  // handler for email. giving messages below email input if email is not valid input
+
+
+  _createClass(SignUp, [{
+    key: 'handleEmailInput',
+    value: function handleEmailInput(e) {
+      this.setState({ email: e.target.value });
+      var email = e.target.value;
+      // for email error message
+      var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (reg.test(email)) {
+        this.setState({ email_msg: ' ' });
+        this.setState({ email: email });
+      } else {
+        this.setState({ email_msg: 'Enter valid email e.g. example@example.com' });
+      }
+    }
+
+    // handler for password. giving messages below password
+    // if password is not of 4 digits and it must be numeric
+
+  }, {
+    key: 'handlePasswordInput',
+    value: function handlePasswordInput(e) {
+      this.setState({ password: e.target.value });
+      var pswd = e.target.value;
+      // for password error message
+      var numbers = /^[0-9]+$/;
+      // let pswd= this.state.password
+
+      if (!(pswd.length == 4)) {
+        this.setState({
+          password_msg: 'Could be 4 digits, easy password You might need to change it later tough'
+        });
+      } else if (!numbers.test(this.state.password)) {
+        this.setState({ password_msg: 'Password must be numeric!' });
+      } else {
+        this.setState({ password_msg: ' ' });
+        this.setState({ password: pswd });
+      }
+    }
+
+    /* for disabling submit button if input fiels are empty--
+    email is not a valid input --password is not numeric and  of 4 digits */
+
+  }, {
+    key: 'canBeSubmited',
+    value: function canBeSubmited() {
+      var _state = this.state,
+          email = _state.email,
+          password = _state.password;
+
+
+      var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      var numbers = /^[0-9]+$/;
+      if (email == ' ' && password == ' ') {
+        return false;
+      }
+      if (reg.test(email) && password.length == 4 && numbers.test(password)) {
+        return true;
+      }
+      var isEnabled = false;
+      return isEnabled;
+    }
+
+    // handling signup request. called when submit button is clicked.
+
+  }, {
+    key: 'handleSignUp',
+    value: function handleSignUp(e) {
+      e.preventDefault();
+      var signup_data = this.state;
+
+      var email = this.state.email;
+      var password = this.state.password;
+      // sending received data i.e. email and password to redux action so as to send to backend server
+      this.props.fetchSignup(email, password);
+
+      // to reset  input fields
+      this.setState({ email: '', password: '' });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var isEnabled = this.canBeSubmited();
+      var res_received = void 0;
+      if (this.props.signupdata.fetchSignUp.response.message) {
+        res_received = _react2.default.createElement(
+          'span',
+          { className: 'response', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 91
+            }
+          },
+          this.props.signupdata.fetchSignUp.response.message
+        );
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'signUp_section', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 98
+          }
+        },
+        _react2.default.createElement(
+          'div',
+          { className: 'signUp_img', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 99
+            }
+          },
+          _react2.default.createElement(
+            'span',
+            { className: 'signup_text', __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 100
+              }
+            },
+            'Sign Up'
+          ),
+          _react2.default.createElement('img', { src: '../assets/images/login/signup.png', alt: 'signUp_img', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 101
+            }
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'signUp_input', __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 103
+            }
+          },
+          _react2.default.createElement(
+            'form',
+            { onSubmit: this.handleSignUp.bind(this), __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 104
+              }
+            },
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 105
+                }
+              },
+              _react2.default.createElement('input', {
+                type: 'email',
+                name: 'email',
+                className: 'user_inputs_signup form-control password_note',
+                placeholder: 'Email',
+                value: this.state.email,
+                onChange: this.handleEmailInput.bind(this),
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 106
+                }
+              }),
+              _react2.default.createElement(
+                'span',
+                { className: 'errorMessage', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 114
+                  }
+                },
+                this.state.email_msg
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 118
+                }
+              },
+              _react2.default.createElement('input', {
+                type: 'password',
+                name: 'password',
+                className: 'user_inputs_signup form-control password_note',
+                placeholder: 'Password',
+                maxLength: '4',
+                value: this.state.password,
+                onChange: this.handlePasswordInput.bind(this),
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 119
+                }
+              }),
+              _react2.default.createElement(
+                'span',
+                { className: 'errorMessage', __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 128
+                  }
+                },
+                this.state.password_msg
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 132
+                }
+              },
+              _react2.default.createElement(
+                'span',
+                {
+                  __self: this,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 133
+                  }
+                },
+                _react2.default.createElement(
+                  'a',
+                  {
+                    __self: this,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 134
+                    }
+                  },
+                  'Terms and Conditions'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group text-right', __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 138
+                }
+              },
+              _react2.default.createElement('input', {
+                type: 'submit',
+                name: 'SignUp',
+                value: 'Sign Up',
+                'data-toggle': 'tooltip',
+                'data-placement': 'top',
+                title: 'SignUp',
+                className: isEnabled == true ? 'submit_button' : 'IMDisabled',
+                disabled: !isEnabled,
+                __self: this,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 139
+                }
+              })
+            )
+          ),
+          res_received
+        )
+      );
+    }
+  }]);
+
+  return SignUp;
+}(_react.Component);
+
+function mapStateToProps(state) {
+  var signupdata = state;
+  return { signupdata: signupdata };
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    fetchSignup: function fetchSignup(email, password) {
+      dispatch((0, _signup_action.fetchSignup)(email, password));
+    }
+  };
+}
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SignUp);
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(SignUp, 'SignUp', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/SignUp.js');
+
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/SignUp.js');
+
+  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/SignUp.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/b-rave/Documents/jalaj/Frontend-Development/shared/components/SignUp.js');
+}();
+
+;
